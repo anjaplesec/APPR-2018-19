@@ -9,8 +9,19 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezposelnost glede na starost in spol ter brezposelnost glede na statistične regije v Sloveniji. Zanimali me bodo tudi podatki o anketni in registrirani brezposelnosti ter razlike med njima. 
+
+Podatke bom pridobila iz spletne strani Statističnega urada Republike Slovenije(SURS) in iz Zavoda Republike Slovenije za zaposlovanje(ZRSZ):
+ - https://www.stat.si/statweb
+ - https://www.ess.gov.si/
+ 
+ Tabele:
+ - TABELA 1: stopnja brezposelnosti po starostnih skupinah in spolu
+ - TABELA 2: Stopnje registrirane brezposelnosti po statističnih regijah in starosti
+ - TABELA 3: Stopnje registrirane brezposelnosti po območnih službah in spolu
+ 
+ 
+ Z analizo bi rada videla, kaj se je dogajalo z brezposelnostjo v Sloveniji skozi čas.
 
 ## Program
 
@@ -49,7 +60,7 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 ## Binder
 
 Zgornje [povezave](#analiza-podatkov-s-programom-r-201819)
-omogočajo poganjanje projekta na spletu z orodjem [Binder](https://mybinder.org/).
+omogočajo poganjanje projekta na spletu z orodjem [Binder](https://mybinder.org/).i
 V ta namen je bila pripravljena slika za [Docker](https://www.docker.com/),
 ki vsebuje večino paketov, ki jih boste potrebovali za svoj projekt.
 
