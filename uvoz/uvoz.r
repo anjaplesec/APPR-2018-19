@@ -1,54 +1,92 @@
-# 2. faza: Uvoz podatkov
+# 2. faza - UVOZ PODATKOV
 
 sl <- locale("sl", decimal_mark=",", grouping_mark=".")
+source("lib/libraries.r", encoding="UTF-8")
+library(tidyr)
+library(readxl)
+library(data.table)
+library(dplyr)
+library(readr)
+library(ggplot2)
 
-# Funkcija, ki uvozi občine iz Wikipedije
-uvozi.obcine <- function() {
-  link <- "http://sl.wikipedia.org/wiki/Seznam_ob%C4%8Din_v_Sloveniji"
-  stran <- html_session(link) %>% read_html()
-  tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-    .[[1]] %>% html_table(dec=",")
-  for (i in 1:ncol(tabela)) {
-    if (is.character(tabela[[i]])) {
-      Encoding(tabela[[i]]) <- "UTF-8"
-    }
-  }
-  colnames(tabela) <- c("obcina", "povrsina", "prebivalci", "gostota", "naselja",
-                        "ustanovitev", "pokrajina", "regija", "odcepitev")
-  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
-  tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
-  tabela$obcina[tabela$obcina == "Loški potok"] <- "Loški Potok"
-  for (col in c("povrsina", "prebivalci", "gostota", "naselja", "ustanovitev")) {
-    tabela[[col]] <- parse_number(tabela[[col]], na="-", locale=sl)
-  }
-  for (col in c("obcina", "pokrajina", "regija")) {
-    tabela[[col]] <- factor(tabela[[col]])
-  }
-  return(tabela)
+
+#uvoz brezposelnosti izobrazba
+uvozi.brezposelnost_izo <- function(izobrazba) {
+  stolpci <- c("regija", "spol", "leto", "Brez izobrazbe", "Osnovnošolska", "Nižja ali srednja poklicna", 
+               "Srednja strokovna, splošna" , "Višješolska, visokošolska")
+  podatki <- read_csv2("podatki/brazposelnost_izo.csv", 
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=7, n_max=10) %>% .[, -(1:2)]  %>%
+    mutate(`Brez izobrazbe`=parse_number(`Brez izobrazbe`)) %>%
+    melt(id.vars="leto", variable.name="izobrazba", value.name="stevilo")
+  return(podatki)
+}
+brezposelnost_izo <- uvozi.brezposelnost_izo()
+
+#uvoz brezposelnosti
+uvozi.brezposelni <- function(ljudje) {
+  stolpci <- c("j", "p","spol", "2008", "2009", "2010", "2011", "2012", "2013","2014",
+               "2015","2016","2017")
+  podatki <- read_csv2("podatki/brezposelni.csv", 
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=6, n_max=2) %>% .[, -(1:2)] %>% 
+    melt(id.vars="spol", variable.name="leta", value.name="stevilo")
 }
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function(obcine) {
-  data <- read_csv2("podatki/druzine.csv", col_names=c("obcina", 1:4),
-                    locale=locale(encoding="Windows-1250"))
-  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
-    strapplyc("([^ ]+)") %>% sapply(paste, collapse=" ") %>% unlist()
-  data$obcina[data$obcina == "Sveti Jurij"] <- "Sveti Jurij ob Ščavnici"
-  data <- data %>% melt(id.vars="obcina", variable.name="velikost.druzine",
-                        value.name="stevilo.druzin")
-  data$velikost.druzine <- parse_number(data$velikost.druzine)
-  data$obcina <- factor(data$obcina, levels=obcine)
-  return(data)
+brezposelni <- uvozi.brezposelni()
+
+#uvoz brezposelnosti glede na statistične regije
+uvozi.statistične_regije <- function(regije) {
+  stolpci <- c("regija", "2008", "2009", "2010", "2011", "2012", "2013","2014",
+               "2015","2016","2017")
+  podatki <- read_csv2("podatki/statistične_regije.csv", 
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=4, n_max=12) %>%
+    melt(id.vars="regija", variable.name="leto", value.name="stevilo")
 }
 
-# Zapišimo podatke v razpredelnico obcine
-obcine <- uvozi.obcine()
+statistične_regije <- uvozi.statistične_regije()
 
-# Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine(levels(obcine$obcina))
 
-# Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# fazah.
+
+
+#uvoz brezposelnosti glede na starost in spol
+uvozi.brezposelnost_starost <- function(starost) {
+  stolpci <- c("ime", "starost", "spol", "2008", "2009", "2010", "2011", "2012", "2013","2014",
+               "2015","2016","2017")
+  podatki <- read_csv2("podatki/brezposelnost_starost.csv",
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=6, n_max=11) %>% .[, -(1:1)] 
+  return(podatki)
+}
+
+brezposelnost_starost <- uvozi.brezposelnost_starost()
+
+
+#uvoz brezposelnosti glede na tip gospodinjstva
+uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
+  stolpci <- c("regija", "leto", "gospodinjstvo", "število")
+  podatki <- read_csv2("podatki/tip_gospodinjstva.csv", 
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=5, n_max=49) %>% .[, -(1:1)] 
+}
+tip_gospodinjstva <- uvozi.tip_gospodinjstva()
+
+
+#uvoz brezposelnosti glede na trajanje brezposelnosti
+uvozi.trajanje_brezposelnosti <- function(trajanje) {
+  stolpci <- c("trajanje", "spol", "gospodinjstvo", "število")
+  podatki <- read_csv2("podatki/trajanje_brezposelnosti.csv", 
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=6, n_max=15) %>% .[, -(1:1)] 
+}
+
+trajanje_brezposelnosti <- uvozi.trajanje_brezposelnosti()
+
+
