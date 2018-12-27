@@ -1,33 +1,51 @@
-"Brezposelni po šolski izobrabi po: KOHEZIJSKA REGIJA, SPOL, LETO,"
-"MERITVE , IZOBRAZBA"
-
-" ";" ";" ";"Število (v 1000)";" ";" ";" ";" "
-" ";" ";" ";"Brez izobrazbe, nepopolna osnovnošolska";"Osnovnošolska";"Nižja ali srednja poklicna";"Srednja strokovna, splošna";"Višješolska, visokošolska"
-"SLOVENIJA"
-" ";"Spol - SKUPAJ"
-" ";" ";"2008";1 M;8;12;16;8
-" ";" ";"2009";2 M;11;18;22;8
-" ";" ";"2010";2 M;15;20;27;11
-" ";" ";"2011";2 M;15;25;28;14
-" ";" ";"2012";1 M;16;24;30;18
-" ";" ";"2013";1 M;19;29;34;19
-" ";" ";"2014";1 M;17;29;32;20
-" ";" ";"2015";N;15;24;33;19
-" ";" ";"2016";1 M;13;18;27;21
-" ";" ";"2017";N;10;15;23;19
-
-"Vir: Statistièni urad Republike Slovenije."
-
-"Povezane vsebine: "
-"- (seznam "
-"HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-"
-"e=7788 target=_blank) Metodološka pojasnila "
-
-"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
-"teritorialnih enot v Evropski uniji (The Classification  of "
-"Territorial Units for Statistics) – NUTS ((seznam "
-"HREF=http://www.stat.si/StatWeb/glavnanavigacija/metode-in-klasifikac-"
-"ije/klasifikacije TARGET=_blank) opis in pojasnila), raven NUTS 2. "
-"Podatki o spremembah posameznih kohezijskih regij so dostopni tudi na "
-"(seznam HREF=http://www.stat.si/dokument/8483 TARGET=_blank) povezavi."
-
+Brezposelni po šolski izobrabi po: KOHEZIJSKA REGIJA, LETO, SPOL,;;;;;;;
+MERITVE , IZOBRAZBA;;;;;;;
+;;;;;;;
+ ; ; ;Število (v 1000); ; ; ; 
+ ; ; ;Brez izobrazbe, nepopolna osnovnošolska;Osnovnošolska;Nižja ali srednja poklicna;Srednja strokovna, splošna;Višješolska, visokošolska
+SLOVENIJA;;;;;;;
+ ;2008;;;;;;
+ ; ;Moški;1 M;4;7;7;3 M
+ ; ;Ženske;1 M;4 M;5;9;5
+ ;2009;;;;;;
+ ; ;Moški;1 M;7;12;11;3 M
+ ; ;Ženske;1 M;4;7;11;5
+ ;2010;;;;;;
+ ; ;Moški;2 M;9;13;14;5
+ ; ;Ženske;1 M;6;7;13;7
+ ;2011;;;;;;
+ ; ;Moški;1 M;9;16;14;6
+ ; ;Ženske;N;6;9;15;8
+ ;2012;;;;;;
+ ; ;Moški;1 M;9;15;15;6
+ ; ;Ženske;N;7;10;15;12
+ ;2013;;;;;;
+ ; ;Moški;1 M;11;19;15;7
+ ; ;Ženske;1 M;8;11;18;12
+ ;2014;;;;;;
+ ; ;Moški;1 M;10;17;16;6
+ ; ;Ženske;1 M;8;11;16;13
+ ;2015;;;;;;
+ ; ;Moški;N;8;13;17;6
+ ; ;Ženske;N;6;11;17;13
+ ;2016;;;;;;
+ ; ;Moški;N;7;11;14;8
+ ; ;Ženske;N;6;8;13;13
+ ;2017;;;;;;
+ ; ;Moški;N;6;9;11;6
+ ; ;Ženske;N;4;7;12;13
+;;;;;;;
+Vir: Statistièni urad Republike Slovenije.;;;;;;;
+;;;;;;;
+Povezane vsebine: ;;;;;;;
+- (seznam ;;;;;;;
+HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-;;;;;;;
+e=7788 target=_blank) Metodološka pojasnila ;;;;;;;
+;;;;;;;
+Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih ;;;;;;;
+teritorialnih enot v Evropski uniji (The Classification  of ;;;;;;;
+Territorial Units for Statistics) – NUTS ((seznam ;;;;;;;
+HREF=http://www.stat.si/StatWeb/glavnanavigacija/metode-in-klasifikac-;;;;;;;
+ije/klasifikacije TARGET=_blank) opis in pojasnila), raven NUTS 2. ;;;;;;;
+Podatki o spremembah posameznih kohezijskih regij so dostopni tudi na ;;;;;;;
+(seznam HREF=http://www.stat.si/dokument/8483 TARGET=_blank) povezavi.;;;;;;;
