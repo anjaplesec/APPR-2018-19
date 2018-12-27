@@ -14,15 +14,14 @@ V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezpo
 
 Podatke bom pridobila iz spletne strani Statističnega urada Republike Slovenije(SURS), iz Zavoda Republike Slovenije za zaposlovanje(ZRSZ) in iz Eurostat-a:
  - https://www.stat.si/statweb
- - https://www.ess.gov.si/
  - https://ec.europa.eu/eurostat/data/database
  
  Tabele:
  - TABELA 1: čas trajanja brezposelnosti, spol, leto, Slovenija
- - TABELA 2: brezposelnost(v 1000), leto, spol, izobrazba
- - TABELA 3: brezposelnost(v 1000), spol, leto, starost
- - TABELA 4: brezposelnost(v 1000), spol, starost, leto, država
- - TABELA 5: registrirana brezposelnost, statistična regija, leto 
+ - TABELA 2: brezposelnost(v 1000), leto, spol, izobrazba, starost
+ - TABELA 3: brezposelnost(v 1000), spol, starost, leto, državab
+ - TABELA 4: brezposelnost(v 1000), statistična regija, leto 
+ - TABELA 5: brezposelnost(v 1000),tip gospodinjstva, leto 
  
  Z analizo bi rada ugotovila kako se je brezposelnost spreminjala glede na starost, spol, izobrazbo in statistične regije. 
  
