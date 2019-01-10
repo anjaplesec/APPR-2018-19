@@ -20,7 +20,8 @@ library(mosaic)
 #  summarise(povprecje=sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
 slovenija <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_SVN_shp.zip", 
-                             "regije_slovenija") %>% fortify()
+                             "regije_slovenija", pot.zemljevida="regije_slovenija", encoding="Windows-1250") %>% 
+  fortify()
 
 regije <- filter(slovenija, long < 80 & lat < 85)
 
