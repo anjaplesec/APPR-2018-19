@@ -12,14 +12,14 @@ library(abind)
 
 #uvoz brezposelnosti izobrazba
 uvozi.brezposelnost_izo <- function(izobrazba) {
-  stolpci <- c("regija", "leto", "spol", "Brez izobrazbe", "Osnovnošolska", 
+  stolpci <- c("regija", "leta", "spol", "Brez izobrazbe", "Osnovnošolska", 
                "Nižja ali srednja poklicna", "Srednja strokovna, splošna" , 
                "Višješolska, visokošolska")
   podatki <- read_csv2("podatki/brazposelnost_izo.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=6, n_max=30) %>% .[, -(1:1)] %>% 
-    melt(id.vars= c("leto", "spol"),  variable.name="izobrazba", value.name="stevilo") %>%
+    melt(id.vars= c("leta", "spol"),  variable.name="izobrazba", value.name="stevilo") %>%
     fill(1) %>% drop_na(2) %>% mutate(stevilo=parse_number(stevilo, na="N"))
 }
 
@@ -37,20 +37,6 @@ uvozi.brezposelni <- function(ljudje) {
 
 brezposelni <- uvozi.brezposelni()
 
-#uvoz brezposelnosti glede na starost in spol
-uvozi.brezposelnost_starost <- function(starost) {
-  stolpci <- c("ime", "starost", "spol", 2008:2017)
-  podatki <- read_csv2("podatki/brezposelnost_starost.csv",
-                       col_names=stolpci,
-                       locale=locale(encoding="Windows-1250"),
-                       skip=6, n_max=9) %>% .[, -(1:1)] %>% 
-    melt(id.vars= c("starost", "spol"),  variable.name="leta", value.name="stevilo") %>%
-    mutate(stevilo = parse_number(stevilo)) %>%
-    fill(1) %>% drop_na(2)
-}
-
-brezposelnost_starost <- uvozi.brezposelnost_starost()
-
 #uvoz brezposelnosti glede na trajanje brezposelnosti
 uvozi.trajanje_brezposelnosti <- function(trajanje) {
   stolpci <- c("l", "trajanje", "spol", 2008:2017)
@@ -65,7 +51,7 @@ uvozi.trajanje_brezposelnosti <- function(trajanje) {
 
 trajanje_brezposelnosti <- uvozi.trajanje_brezposelnosti()
 
-#!!
+
 #uvoz brezposelnosti glede na tip gospodinjstva
 uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
   stolpci <- c("regija", "leto", "gospodinjstvo", "stevilo")
@@ -73,10 +59,11 @@ uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=5, n_max=49) %>% .[, -(1:1)]  %>%
-    melt(id.vars=c("leto", "gospodinjstvo"), variable.name=NULL, value.name="stevilo") %>%
+    melt(id.vars=c("leto", "gospodinjstvo"), variable.name="regija", value.name="stevilo") %>%
     fill(1)  %>% drop_na(2)
 }
 tip_gospodinjstva <- uvozi.tip_gospodinjstva()
+tip_gospodinjstva$regija <- NULL
 
 
 
@@ -105,3 +92,4 @@ uvozi.brezposelnost_drzave <- function(drzava) {
 }
 
 brezposelnost_drzave <- uvozi.brezposelnost_drzave()
+
