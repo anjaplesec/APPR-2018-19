@@ -32,7 +32,7 @@ V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezpo
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE, message=FALSE}
+```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
@@ -81,7 +81,7 @@ Podatke imam razpredelnicah v obliki *tidy data*.
 # Analiza in vizualizacija podatkov
 
 ```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-#source("vizualizacija/vizualizacija.r", encoding="UTF-8")
+source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
 ```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 1: Brezposelnost po izobrazbi'}
