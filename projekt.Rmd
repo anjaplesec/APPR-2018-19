@@ -24,13 +24,11 @@ source("lib/libraries.r", encoding="UTF-8")
 source("lib/rstudio.r", encoding="UTF-8")
 ```
 
-# Izbira teme
+# Analiza brezposelnosti
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezposelnost glede na starost, spol in izobrazbo ter glede na statistične regije v Sloveniji. Za na konec pa bom to brezposelnost v Sloveniji primerja z brezposelnostjo drugih evropskih držav.
 
-![](slike/grb.png)
-
-***
+![](slike/brezposelnost.jpg)
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -38,33 +36,45 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Podatke sem pridobila iz spletne strani Statističnega urada Republike Slovenije(SURS) in iz Eurostat-a. Vsi podatki so v okliki CSV. 
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+Podatke imam razpredelnicah v obliki *tidy data*.
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+1. `uvozi.brezposelnost_izo` - podatki o brezposelnosti glede na izobrazbo
+   - `leto` - spremenljivka: pove nam, katero leto opazujemo
+   - `spol` - spremenljivka: spol brezposelnega
+   - `izobrazba` - spremenljivka: stopnja izobrazbe brezposelne osebe
+   - `stevilo` - spremenljivka: pove nam število brazposelnih pri določeni izobrazbi
+  
+2. `uvozi.brezposelni` - podatki o brezposelnosti glede na starost in spol
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo
+   - `spol` - spremenljivka: pove nam spol brezposelnega
+   - `stevilo` - spremenljivka: pove nam število brezposelnih glede na spol in leto
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
+#!!!!!!!!!!!
+3. `uvozi.trajanje_brezposelnosti` - podatki o trajnaju brazposelnosti
+   - `trajanje` - spremenljivka: pove nam, koliko časa je oseba že brazposelna
+   - `spol` - spremenljivka: spol brezposelnega
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo
+   - `stevilo` - spremenljivka: pove nam število brazposelnih pri določenem obdobju,
 
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x=naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
-```
+4. `uvozi.tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva
+   - `leto` - spremenljivka: pove nam, katero leto opazujemo
+   - `gospodinjstvo` - spremenljivka: pove nam kakšnega tipa je gospodinjstvo(Enočlansko gospodinjstvo, Samohranilec, Par brez otrok,..)
+   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na tip gospodinjstva
+
+
+5. `uvozi.statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije
+   - `regija` - spremenljivka: pove nam katero statistično regijo opazujemo(Koroška, Posavska, Goriška,..)
+   - `leto` - spremenljivka: pove nam, katero leto opazujemo
+   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno statistično regijo
+   
+
+6. `uvozi.brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah
+   - `država` - spremenljivka: pove nam katero državo opazujemo(Slovenija, Nemčija, Italija,..)
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo
+   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno državo
 
 ***
 
@@ -74,13 +84,52 @@ ggplot(obcine, aes(x=naselja)) + geom_histogram() +
 #source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 1: Brezposelnost po izobrazbi'}
+graf_izobrazbe <- ggplot(data = brezposelnost_izo) + 
+  aes(x = leto, y = stevilo)+ 
+  geom_bar(stat="identity", aes(fill=izobrazba)) + 
+  xlab("leto") + 
+  ylab("število brezposelnih") +
+  ggtitle("brezposelnost po izobrazbi in letih")
+```
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data=left_join(zemljevid, povprecja, by=c("OB_UIME"="obcina")),
-                        aes(x=long, y=lat, group=group, fill=povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill=guide_colorbar(title="Povprečje"))
+
+```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 2: Brezposelnost po spolu'}
+graf_brezposelnost_spol <- ggplot(data = brezposelni) +
+  aes(x=leta, y=stevilo) +
+  geom_bar(stat="identity", aes(fill=spol)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("leto") +
+  ylab("število brezposelnih") +
+  ggtitle("brezposelnost po starosti in spolu")
+
+```
+
+```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 3: Brezposelnost glede na tip gospodinjstva'}
+graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leto, y= stevilo, 
+                                     colour = gospodinjstvo)) +
+  geom_line(size = 1, lineend = "round" ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("leto") +
+  ylab("število brezposelnih") +
+  ggtitle("brezposelnost glede na tip gospodinjstva")
+```
+
+***
+
+Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah
+```{r, echo=FALSE, fig.align='center', fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
+ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
+                        aes(x=long, y=lat, group=group, fill=stevilo)) +
+  ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
+```
+
+Zemljevid prikazuje brezposelnost po Evropskih državah
+```{r, echo=FALSE, fig.align='center', fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
+ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="država")),
+                        aes(x=long, y=lat, group=group, fill=stevilo),
+                        colour = "black") +
+  ggtitle("Število brezposelnih v Evropi leta 2017") + xlab("") + ylab("") 
 ```
 
 ***
@@ -93,15 +142,10 @@ ggplot() + geom_polygon(data=left_join(zemljevid, povprecja, by=c("OB_UIME"="obc
 
 Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
-```
+
+
+
+
 
 ***
 
