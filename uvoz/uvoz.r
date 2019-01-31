@@ -88,8 +88,20 @@ uvozi.brezposelnost_drzave <- function(drzava) {
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=11, n_max=34) %>%
-  melt(id.vars="država", variable.name="leta", value.name="stevilo")
+    melt(id.vars="država", variable.name="leta", value.name="stevilo")
 }
 
 brezposelnost_drzave <- uvozi.brezposelnost_drzave()
 
+#uvoz brazposelnosti za 4. fazo
+uvozi.4faza <- function(faza) {
+  stolpci <- c("država", "obcina", 2005:2016)
+  podatki <- read_csv2("podatki/4_faza.csv", 
+                       col_names=stolpci,
+                       locale=locale(encoding="Windows-1250"),
+                       skip=6, n_max=212) %>% .[, -(1:1)] %>% 
+    melt(id.vars="obcina", variable.name="leta", value.name="stevilo") %>%
+    mutate(stevilo=parse_number(stevilo, na="N"))
+}
+
+zadnja_faza <- uvozi.4faza()
