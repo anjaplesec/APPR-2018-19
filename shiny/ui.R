@@ -1,17 +1,10 @@
 library(shiny)
 
-shinyUI(fluidPage(
-  
-  titlePanel("Slovenske občine"),
-  
-  tabsetPanel(
-      tabPanel("Velikost družine",
-               DT::dataTableOutput("druzine")),
-      
-      tabPanel("Število naselij",
-               sidebarPanel(
-                  uiOutput("pokrajine")
-                ),
-               mainPanel(plotOutput("naselja")))
-    )
-))
+fluidPage(
+  titlePanel("Brezposelnost po občinah"),
+  tabPanel("Graf",
+           sidebarPanel(
+             selectInput("obcina", label = "Izberite občino:",
+                         choices= (sort(unique(zadnja_faza$obcina))))),
+           mainPanel(plotOutput("brezposelnost")))
+)

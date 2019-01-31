@@ -1,24 +1,12 @@
 library(shiny)
 
-shinyServer(function(input, output) {
-  output$druzine <- DT::renderDataTable({
-    dcast(druzine, obcina ~ velikost.druzine, value.var="stevilo.druzin") %>%
-      rename(`Občina`=obcina)
-  })
+function(input, output) {
   
-  output$pokrajine <- renderUI(
-    selectInput("pokrajina", label="Izberi pokrajino",
-                choices=c("Vse", levels(obcine$pokrajina)))
-  )
-  output$naselja <- renderPlot({
-    main <- "Pogostost števila naselij"
-    if (!is.null(input$pokrajina) && input$pokrajina %in% levels(obcine$pokrajina)) {
-      t <- obcine %>% filter(pokrajina == input$pokrajina)
-      main <- paste(main, "v regiji", input$pokrajina)
-    } else {
-      t <- obcine
-    }
-    ggplot(t, aes(x=naselja)) + geom_histogram() +
-      ggtitle(main) + xlab("Število naselij") + ylab("Število občin")
+   output$brezposelnost <- renderPlot({
+     tabela1 <- zadnja_faza %>% filter(obcina == input$obcina)
+     print(ggplot(tabela1, aes(x = leta, y = stevilo)) + geom_line() + 
+      ylab("Brezposelnost") + xlab("Leto") +
+      ggtitle("Brezposelnost po občinah"))
   })
-})
+}
+    
