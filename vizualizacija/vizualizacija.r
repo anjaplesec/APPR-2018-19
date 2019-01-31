@@ -11,7 +11,7 @@ slovenija <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36
                              "gadm36_SVN_2") %>% 
   fortify()
 
-#gledamo samo leto 2017
+#gledamo samo leta 2017
 regije <- statistične_regije
 regije <- as.data.frame(regije, stringAsFactors=FALSE)
 regije2017 <- regije[109:120,]
@@ -46,6 +46,7 @@ Evropa <- filter(Evropa, long < 43 & long > -30 & lat > 30 & lat < 73)
 drzave <- brezposelnost_drzave
 drzave <- as.data.frame(drzave, stringAsFactors=FALSE)
 drzave2017 <- drzave[307:340,]
+drzave2017[6, 1] <- "Germany"
 
 
 ggplot(Evropa, aes(x=long, y=lat, group=group, fill=NAME)) +
@@ -53,48 +54,35 @@ ggplot(Evropa, aes(x=long, y=lat, group=group, fill=NAME)) +
   labs(title="svet - osnovna slika") +
   theme(legend.position="none")
 
-ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="država")),
+ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stevilo),
                         colour = "black") +
   ggtitle("Število brezposelnih v Evropi leta 2017") + xlab("") + ylab("") 
 
 #grafi
 graf_izobrazbe <- ggplot(data = brezposelnost_izo) + 
-  aes(x = leto, y = stevilo)+ 
+  aes(x =factor(leta), y = stevilo)+ 
   geom_bar(stat="identity", aes(fill=izobrazba)) + 
-  xlab("leto") + 
+  xlab("leta") + 
   ylab("število brezposelnih") +
   ggtitle("brezposelnost po izobrazbi in letih")
-
-plot(graf_izobrazbe)
-
 
 graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  xlab("leto") +
+  xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("brezposelnost po starosti in spolu")
 
-plot(graf_brezposelnost_spol)
 
-
-graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leto, y= stevilo, 
+graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 
                                      colour = gospodinjstvo)) +
   geom_line(size = 1, lineend = "round" ) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  xlab("leto") +
+  xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("brezposelnost glede na tip gospodinjstva")
-
-plot(graf_tip_gospodinjstva)
-
-
-
-
-
-
 
 
 

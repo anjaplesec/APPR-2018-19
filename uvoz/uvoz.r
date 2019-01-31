@@ -54,12 +54,12 @@ trajanje_brezposelnosti <- uvozi.trajanje_brezposelnosti()
 
 #uvoz brezposelnosti glede na tip gospodinjstva
 uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
-  stolpci <- c("regija", "leto", "gospodinjstvo", "stevilo")
+  stolpci <- c("regija", "leta", "gospodinjstvo", "stevilo")
   podatki <- read_csv2("podatki/tip_gospodinjstva.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=5, n_max=49) %>% .[, -(1:1)]  %>%
-    melt(id.vars=c("leto", "gospodinjstvo"), variable.name="regija", value.name="stevilo") %>%
+    melt(id.vars=c("leta", "gospodinjstvo"), variable.name="regija", value.name="stevilo") %>%
     fill(1)  %>% drop_na(2)
 }
 tip_gospodinjstva <- uvozi.tip_gospodinjstva()
@@ -74,7 +74,7 @@ uvozi.statistične_regije <- function(regije) {
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=4, n_max=12) %>%
-    melt(id.vars="regija", variable.name="leto", value.name="stevilo")  %>%
+    melt(id.vars="regija", variable.name="leta", value.name="stevilo")  %>%
     mutate(stevilo = parse_number(stevilo))
 }
 
@@ -83,15 +83,15 @@ statistične_regije <- uvozi.statistične_regije()
 
 #uvoz brezposelnosti glede na države
 uvozi.brezposelnost_drzave <- function(drzava) {
-  stolpci <- c("država", 2008:2017)
+  stolpci <- c("drzava", 2008:2017)
   podatki <- read_csv2("podatki/brezposelnost_drzave.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=11, n_max=34) %>%
-    melt(id.vars="država", variable.name="leta", value.name="stevilo")
+    melt(id.vars="drzava", variable.name="leta", value.name="stevilo")
 }
-
 brezposelnost_drzave <- uvozi.brezposelnost_drzave()
+
 
 #uvoz brazposelnosti za 4. fazo
 uvozi.4faza <- function(faza) {
@@ -105,3 +105,4 @@ uvozi.4faza <- function(faza) {
 }
 
 zadnja_faza <- uvozi.4faza()
+

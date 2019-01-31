@@ -52,12 +52,11 @@ Podatke imam razpredelnicah v obliki *tidy data*.
    - `spol` - spremenljivka: pove nam spol brezposelnega
    - `stevilo` - spremenljivka: pove nam število brezposelnih glede na spol in leto
 
-#!!!!!!!!!!!
-3. `uvozi.trajanje_brezposelnosti` - podatki o trajnaju brazposelnosti
-   - `trajanje` - spremenljivka: pove nam, koliko časa je oseba že brazposelna
+3. `uvozi.trajanje_brezposelnosti` - podatki o trajanju brezposelnosti
+   - `trajanje` - spremenljivka: pove nam, koliko časa je oseba že brezposelna
    - `spol` - spremenljivka: spol brezposelnega
    - `leta` - spremenljivka: pove nam, katero leto opazujemo
-   - `stevilo` - spremenljivka: pove nam število brazposelnih pri določenem obdobju,
+   - `stevilo` - spremenljivka: pove nam število brezposelnih
 
 4. `uvozi.tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva
    - `leto` - spremenljivka: pove nam, katero leto opazujemo
@@ -84,48 +83,30 @@ Podatke imam razpredelnicah v obliki *tidy data*.
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 1: Brezposelnost po izobrazbi'}
-graf_izobrazbe <- ggplot(data = brezposelnost_izo) + 
-  aes(x = leto, y = stevilo)+ 
-  geom_bar(stat="identity", aes(fill=izobrazba)) + 
-  xlab("leto") + 
-  ylab("število brezposelnih") +
-  ggtitle("brezposelnost po izobrazbi in letih")
+```{r graf1, echo=FALSE, fig.align='center',warning=FALSE, fig.cap='Graf 1: Brezposelnost po izobrazbi'}
+print(graf_izobrazbe)
 ```
 
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 2: Brezposelnost po spolu'}
-graf_brezposelnost_spol <- ggplot(data = brezposelni) +
-  aes(x=leta, y=stevilo) +
-  geom_bar(stat="identity", aes(fill=spol)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  xlab("leto") +
-  ylab("število brezposelnih") +
-  ggtitle("brezposelnost po starosti in spolu")
-
+```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 2: Brezposelnost po spolu'}
+print(graf_brezposelnost_spol)
 ```
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Graf 3: Brezposelnost glede na tip gospodinjstva'}
-graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leto, y= stevilo, 
-                                     colour = gospodinjstvo)) +
-  geom_line(size = 1, lineend = "round" ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  xlab("leto") +
-  ylab("število brezposelnih") +
-  ggtitle("brezposelnost glede na tip gospodinjstva")
+```{r graf3, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 3: Brezposelnost glede na tip gospodinjstva'}
+print(graf_tip_gospodinjstva)
 ```
 
 ***
 
 Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah
-```{r, echo=FALSE, fig.align='center', fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
+```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stevilo)) +
   ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
 ```
 
 Zemljevid prikazuje brezposelnost po Evropskih državah
-```{r, echo=FALSE, fig.align='center', fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
+```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="država")),
                         aes(x=long, y=lat, group=group, fill=stevilo),
                         colour = "black") +
