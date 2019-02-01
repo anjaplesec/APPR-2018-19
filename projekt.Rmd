@@ -26,7 +26,7 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Analiza brezposelnosti
 
-V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezposelnost glede na starost, spol in izobrazbo ter glede na statistične regije v Sloveniji. Za na konec pa bom to brezposelnost v Sloveniji primerja z brezposelnostjo drugih evropskih držav.
+V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezposelnost glede na starost, spol in izobrazbo ter glede na statistične regije v Sloveniji. Za na konec bom primerjala brezposelnost po Slovenskih občinah ter brezposelnost v Sloveniji v primerjavi z drugimi evropskimi državami.
 
 ![](slike/brezposelnost.jpg)
 
@@ -41,37 +41,44 @@ Podatke sem pridobila iz spletne strani Statističnega urada Republike Slovenije
 Podatke imam razpredelnicah v obliki *tidy data*.
 
 
-1. `uvozi.brezposelnost_izo` - podatki o brezposelnosti glede na izobrazbo
+1. `brezposelnost_izo` - podatki o brezposelnosti glede na izobrazbo
    - `leto` - spremenljivka: pove nam, katero leto opazujemo
    - `spol` - spremenljivka: spol brezposelnega
    - `izobrazba` - spremenljivka: stopnja izobrazbe brezposelne osebe
    - `stevilo` - spremenljivka: pove nam število brazposelnih pri določeni izobrazbi
   
-2. `uvozi.brezposelni` - podatki o brezposelnosti glede na starost in spol
+2. `brezposelni` - podatki o brezposelnosti glede na starost in spol
    - `leta` - spremenljivka: pove nam, katero leto opazujemo
    - `spol` - spremenljivka: pove nam spol brezposelnega
    - `stevilo` - spremenljivka: pove nam število brezposelnih glede na spol in leto
 
-3. `uvozi.trajanje_brezposelnosti` - podatki o trajanju brezposelnosti
+3. `trajanje_brezposelnosti` - podatki o trajanju brezposelnosti
    - `trajanje` - spremenljivka: pove nam, koliko časa je oseba že brezposelna
    - `spol` - spremenljivka: spol brezposelnega
    - `leta` - spremenljivka: pove nam, katero leto opazujemo
    - `stevilo` - spremenljivka: pove nam število brezposelnih
 
-4. `uvozi.tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva
+4. `tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva
    - `leto` - spremenljivka: pove nam, katero leto opazujemo
    - `gospodinjstvo` - spremenljivka: pove nam kakšnega tipa je gospodinjstvo(Enočlansko gospodinjstvo, Samohranilec, Par brez otrok,..)
    - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na tip gospodinjstva
 
 
-5. `uvozi.statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije
+5. `statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije
    - `regija` - spremenljivka: pove nam katero statistično regijo opazujemo(Koroška, Posavska, Goriška,..)
    - `leto` - spremenljivka: pove nam, katero leto opazujemo
    - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno statistično regijo
    
 
-6. `uvozi.brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah
+6. `brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah
    - `država` - spremenljivka: pove nam katero državo opazujemo(Slovenija, Nemčija, Italija,..)
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo
+   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno državo
+
+To tabelo sem dodala za bolj zanimivo analizo v zadnji fazi.
+ 
+7.`zadnja_faza` - podatki o brezposelnosti v posameznih slovenskih občinah
+   - `obcina` - spremenljivka: pove nam katero občino opazujemo(Bled, Maribor, Piran,..)
    - `leta` - spremenljivka: pove nam, katero leto opazujemo
    - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno državo
 
@@ -83,6 +90,7 @@ Podatke imam razpredelnicah v obliki *tidy data*.
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
+Iz grafa lahko vidimo, da ni več ljudi, ki bi bili brez službe in brez izobrazbe, to je tudi posledica razvoja naše družbe glede izobrazbe. Brezposelnost ljudi z višješolsko ali visokošolsko izobrazbo pa narašča, saj se vedno več ljudi odloča za študij.
 ```{r graf1, echo=FALSE, fig.align='center',warning=FALSE, fig.cap='Graf 1: Brezposelnost po izobrazbi'}
 print(graf_izobrazbe)
 ```
@@ -98,14 +106,15 @@ print(graf_tip_gospodinjstva)
 
 ***
 
-Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah
+Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je največ brezposelnih ljudi na Pomurskem, medtem ko na Koroškem in Posavskemto to ne drži.
 ```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stevilo)) +
   ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
 ```
 
-Zemljevid prikazuje brezposelnost po Evropskih državah
+Zemljevid prikazuje brezposelnost po Evropskih državah, vendar ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
+Iz zemljevida lahko razberemo, da je največ brezposelnih v Španiji in Turčiji, Slovenija pa spada v skupino, kjer je malo brezposelnih ljudi.
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stevilo),
@@ -121,15 +130,9 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 #source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
-
-
-
-
-
 
 ***
 
 ```{r shiny, echo=FALSE}
-#shinyAppDir("shiny", options=list(width="100%", height=600))
+shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
