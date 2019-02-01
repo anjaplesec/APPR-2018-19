@@ -1,7 +1,6 @@
 # Analiza podatkov s programom R, 2018/19
 
 Avtor: Anja Plesec
->>>>>>> b7f5571b86194f0d52061004189958f5a94091b0
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
