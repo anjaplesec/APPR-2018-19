@@ -107,7 +107,7 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
 
 Zemljevid prikazuje brezposelnost po Evropskih državah
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
-ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="država")),
+ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stevilo),
                         colour = "black") +
   ggtitle("Število brezposelnih v Evropi leta 2017") + xlab("") + ylab("") 
