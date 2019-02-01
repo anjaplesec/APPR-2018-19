@@ -12,9 +12,9 @@ library(abind)
 
 #uvoz brezposelnosti izobrazba
 uvozi.brezposelnost_izo <- function(izobrazba) {
-  stolpci <- c("regija", "leta", "spol", "Brez izobrazbe", "Osnovnošolska", 
-               "Nižja ali srednja poklicna", "Srednja strokovna, splošna" , 
-               "Višješolska, visokošolska")
+  stolpci <- c("regija", "leta", "spol", "Brez izobrazbe", "Osnovnosolska", 
+               "Nizja ali srednja poklicna", "Srednja strokovna, splosna" , 
+               "Visjesolska, visokosolska")
   podatki <- read_csv2("podatki/brazposelnost_izo.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),

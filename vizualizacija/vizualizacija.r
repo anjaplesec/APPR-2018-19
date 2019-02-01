@@ -66,6 +66,7 @@ graf_izobrazbe <- ggplot(data = brezposelnost_izo) +
   xlab("leta") + 
   ylab("število brezposelnih") +
   ggtitle("brezposelnost po izobrazbi in letih")
+plot(graf_izobrazbe)
 
 graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   aes(x=leta, y=stevilo) +
