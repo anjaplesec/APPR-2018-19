@@ -95,6 +95,7 @@ Iz grafa lahko vidimo, da ni več ljudi, ki bi bili brez službe in brez izobraz
 print(graf_izobrazbe)
 ```
 
+Iz tega grafa lahko razberemo zanimivo lastnost, in sicer to, da je od leta 2008 do 2015 bilo več brezposelnih moških, po letu 2015 pa se je trend obrnil in je sedaj več brezposelnih žensk kot pa moških.
 
 ```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 2: Brezposelnost po spolu'}
 print(graf_brezposelnost_spol)
@@ -125,14 +126,11 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 ***
 
 # Napredna analiza podatkov
-
-```{r analiza, echo=FALSE, message=FALSE}
-#source("analiza/analiza.r", encoding="UTF-8")
-```
-
-
-***
+Za na konec pa sem naredila še aplikacijo, ki prikazuje število brezposelnih ljudi v posameznih slovenskih občinah. 
 
 ```{r shiny, echo=FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
+
+# Zaključek
+Skozi analizo sem ugotovila, da brezposelnost v Sloveniji v zadnjih nekaj letih pada, pravtako pada tudi brezposelnost po evropskih državah.

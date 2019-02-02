@@ -75,7 +75,7 @@ graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("brezposelnost po starosti in spolu")
-
+plot(graf_brezposelnost_spol)
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 
                                      colour = gospodinjstvo)) +
@@ -84,7 +84,7 @@ graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevil
   xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("brezposelnost glede na tip gospodinjstva")
-
+plot(graf_tip_gospodinjstva)
 
 
 
