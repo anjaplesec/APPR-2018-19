@@ -77,7 +77,7 @@ Podatke imam razpredelnicah v obliki *tidy data*.
 
 To tabelo sem dodala za bolj zanimivo analizo v zadnji fazi.
  
-7.`zadnja_faza` - podatki o brezposelnosti v posameznih slovenskih občinah
+7. `zadnja_faza` - podatki o brezposelnosti v posameznih slovenskih občinah
    - `obcina` - spremenljivka: pove nam katero občino opazujemo(Bled, Maribor, Piran,..)
    - `leta` - spremenljivka: pove nam, katero leto opazujemo
    - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno državo

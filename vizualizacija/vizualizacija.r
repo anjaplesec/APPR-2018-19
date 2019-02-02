@@ -65,26 +65,22 @@ graf_izobrazbe <- ggplot(data = brezposelnost_izo) +
   geom_bar(stat="identity", aes(fill=izobrazba)) + 
   xlab("leta") + 
   ylab("število brezposelnih") +
-  ggtitle("brezposelnost po izobrazbi in letih")
-plot(graf_izobrazbe)
+  ggtitle("Brezposelnost po izobrazbi")
 
 graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   xlab("leta") +
   ylab("število brezposelnih") +
-  ggtitle("brezposelnost po starosti in spolu")
-plot(graf_brezposelnost_spol)
+  ggtitle("Brezposelnost po spolu")
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 
                                      colour = gospodinjstvo)) +
   geom_line(size = 1, lineend = "round" ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   xlab("leta") +
   ylab("število brezposelnih") +
-  ggtitle("brezposelnost glede na tip gospodinjstva")
-plot(graf_tip_gospodinjstva)
+  ggtitle("Brezposelnost glede na tip gospodinjstva")
+
 
 
 
