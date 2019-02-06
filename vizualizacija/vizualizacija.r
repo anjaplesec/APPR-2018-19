@@ -17,20 +17,19 @@ regije <- as.data.frame(regije, stringAsFactors=FALSE)
 regije2017 <- regije[109:120,]
 
 #sprememba imen za regije 
-regije2017[3,1] <- "KoroĹˇka"
-regije2017[12,1] <- "Obalno-kraĹˇka"
-regije2017[11,1] <- "GoriĹˇka"
-regije2017[10,1] <- "Notranjsko-kraĹˇka"
+regije2017[3,1] <- "Koroška"
+regije2017[12,1] <- "Obalno-kraška"
+regije2017[11,1] <- "Goriška"
+regije2017[10,1] <- "Notranjsko-kraška"
 regije2017[6,1] <- "Spodnjeposavska"
 
-regije_zemljevid<- regije2017
 
 ggplot(slovenija, aes(x=long, y=lat, group=group, fill=NAME_1)) +
   geom_polygon() +
   labs(title="Slovenija - osnovna slika") +
   theme(legend.position="none")
 
-ggplot() + geom_polygon(data=left_join(slovenija, regije_zemljevid, by=c("NAME_1"="regija")),
+ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stevilo)) +
   ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
 
@@ -73,7 +72,7 @@ graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
   xlab("leta") +
-  ylab("število brezposelnih") +
+  ylab("�tevilo brezposelnih") +
   ggtitle("Brezposelnost po spolu")
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 
@@ -82,7 +81,6 @@ graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevil
   xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("Brezposelnost glede na tip gospodinjstva")
-
 
 
 

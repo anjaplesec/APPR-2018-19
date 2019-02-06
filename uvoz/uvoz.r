@@ -88,7 +88,9 @@ uvozi.brezposelnost_drzave <- function(drzava) {
                        skip=11, n_max=34) %>%
     melt(id.vars="drzava", variable.name="leta", value.name="stevilo")
 }
+
 brezposelnost_drzave <- uvozi.brezposelnost_drzave()
+brezposelnost_drzave$stevilo <- round(brezposelnost_drzave$stevilo)
 
 
 #uvoz brazposelnosti za 4. fazo

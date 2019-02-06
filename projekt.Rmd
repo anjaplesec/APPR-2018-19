@@ -90,16 +90,18 @@ To tabelo sem dodala za bolj zanimivo analizo v zadnji fazi.
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-Iz grafa lahko vidimo, da ni več ljudi, ki bi bili brez službe in brez izobrazbe, to je tudi posledica razvoja naše družbe glede izobrazbe. Brezposelnost ljudi z višješolsko ali visokošolsko izobrazbo pa narašča, saj se vedno več ljudi odloča za študij.
+Iz spodnjega grafa lahko razberemo, da se povečuje brezposelnost ljudi z višjo ali visokošolsko izobrazbo, kar je tudi posledica našega razvoja družbe, saj se vedno več ljudi odloča za študij. Opazimo lahko tudi, da se zmanjšuje brezposelnost ljudi, ki so brez izborazbe, imajo samo osnovnoškolsko izobrazbo ali pa nižjo ozirma srednje poklicno izobrazbo, kar je spet posledica že zgoraj omenjenega ravoja družbe.
 ```{r graf1, echo=FALSE, fig.align='center',warning=FALSE, fig.cap='Graf 1: Brezposelnost po izobrazbi'}
 print(graf_izobrazbe)
 ```
 
-Iz tega grafa lahko razberemo zanimivo lastnost, in sicer to, da je od leta 2008 do 2015 bilo več brezposelnih moških, po letu 2015 pa se je trend obrnil in je sedaj več brezposelnih žensk kot pa moških.
-
+Spodnji graf prikazuje brezposelnost glede na sploh in iz tega grafa lahko razberemo, da je do leta 2013 bilo število brezposelnih moških večje od števila brezposelnih žensk, medtem ko se je po letu 2013 ta trend obrnil, torej je bilo več brezposelnih žensko kot moških.
+Iz grafa je rezvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je dober znak za našo gospodarstvo.
 ```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 2: Brezposelnost po spolu'}
 print(graf_brezposelnost_spol)
 ```
+
+Iz grafa vidimo, da so se vse brezposelnosti od leta 2011 zmanjšale, najbolj očitno pa se je zmanjšala brezposelnost enočlanskega gospodinjstva.
 
 ```{r graf3, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 3: Brezposelnost glede na tip gospodinjstva'}
 print(graf_tip_gospodinjstva)
@@ -107,7 +109,7 @@ print(graf_tip_gospodinjstva)
 
 ***
 
-Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je največ brezposelnih ljudi na Pomurskem, medtem ko na Koroškem in Posavskemto to ne drži.
+Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je največ brezposelnih ljudi na Pomurskem, medtem ko na Koroškem in Posavksem to ne drži. V Ljubljani pa je brezposelnost blizu povprečni brezposelnosti v Sloveniji leta 2017.
 ```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
 
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
@@ -116,7 +118,7 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
 ```
 
 Zemljevid prikazuje brezposelnost po Evropskih državah, vendar ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
-Iz zemljevida lahko razberemo, da je največ brezposelnih v Španiji in Turčiji, Slovenija pa spada v skupino, kjer je malo brezposelnih ljudi.
+Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in na Poljskem. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo, Španijo ali z Združenem kraljestvo Velike Britanije in Severne Irske.
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stevilo),
@@ -127,7 +129,7 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 ***
 
 # Napredna analiza podatkov
-
+V tej fazi sem naredila primerjavo med brezposelnostjo v SLoveniji z rezposelnostjo glede na trajanje.
 
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")
