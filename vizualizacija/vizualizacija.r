@@ -55,7 +55,7 @@ ggplot(Evropa, aes(x=long, y=lat, group=group, fill=NAME)) +
   theme(legend.position="none")
 
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
-                        aes(x=long, y=lat, group=group, fill=stevilo),
+                        aes(x=long, y=lat, group=group, fill=(stevilo)),
                         colour = "black") +
   ggtitle("Število brezposelnih v Evropi leta 2017") + xlab("") + ylab("") 
 

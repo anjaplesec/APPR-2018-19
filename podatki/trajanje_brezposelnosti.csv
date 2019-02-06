@@ -1,36 +1,28 @@
-Brezposelni po trajanju iskanja dela po: KOHEZIJSKA REGIJA,;;;;;;;;;;;;
-BREZPOSELNI, SPOL, MERITVE , LETO;;;;;;;;;;;;
-;;;;;;;;;;;;
- ; ; ;Število (v 1000); ; ; ; ; ; ; ; ; 
- ; ; ;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017
-SLOVENIJA;;;;;;;;;;;;
- ;..Manj kot 1 mesec;;;;;;;;;;;
- ; ;Moški;1 M;2 M;1 M;1 M;1 M;1 M;1 M;1 M;1 M;1 M
- ; ;Ženske;1 M;2 M;1 M;1 M;1 M;1 M;1 M;1 M;1 M;1 M
- ;..Od 1 do 5 mesecev;;;;;;;;;;;
- ; ;Moški;8;13;12;13;13;12;12;11;10;8
- ; ;Ženske;8;12;12;12;12;13;12;11;10;11
- ;..Od 6 do 11 mesecev;;;;;;;;;;;
- ; ;Moški;3 M;8;8;8;8;9;8;7;6;5
- ; ;Ženske;3 M;5;6;7;8;9;8;7;7;6
- ;..Od 12 do 23 mesecev;;;;;;;;;;;
- ; ;Moški;4;5;12;11;11;12;10;9;9;7
- ; ;Ženske;5;5;8;9;11;11;12;11;9;7
- ;..24 in veè mesecev;;;;;;;;;;;
- ; ;Moški;6;5;9;12;13;17;18;15;14;10
- ; ;Ženske;6;5;7;9;12;16;16;17;13;10
-;;;;;;;;;;;;
-Vir: Statistièni urad Republike Slovenije.;;;;;;;;;;;;
-;;;;;;;;;;;;
-Povezane vsebine: ;;;;;;;;;;;;
-- (seznam ;;;;;;;;;;;;
-HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-;;;;;;;;;;;;
-e=7788 target=_blank) Metodološka pojasnila ;;;;;;;;;;;;
-;;;;;;;;;;;;
-Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih ;;;;;;;;;;;;
-teritorialnih enot v Evropski uniji (The Classification  of ;;;;;;;;;;;;
-Territorial Units for Statistics) – NUTS ((seznam ;;;;;;;;;;;;
-HREF=http://www.stat.si/StatWeb/glavnanavigacija/metode-in-klasifikac-;;;;;;;;;;;;
-ije/klasifikacije TARGET=_blank) opis in pojasnila), raven NUTS 2. ;;;;;;;;;;;;
-Podatki o spremembah posameznih kohezijskih regij so dostopni tudi na ;;;;;;;;;;;;
-(seznam HREF=http://www.stat.si/dokument/8483 TARGET=_blank) povezavi.;;;;;;;;;;;;
+"Brezposelni po trajanju iskanja dela po: KOHEZIJSKA REGIJA, SPOL,"
+"BREZPOSELNI, MERITVE , LETO"
+
+" ";" ";" ";"Število (v 1000)";" ";" ";" ";" ";" ";" ";" ";" ";" "
+" ";" ";" ";"2008";"2009";"2010";"2011";"2012";"2013";"2014";"2015";"2016";"2017"
+"SLOVENIJA"
+" ";"Spol - SKUPAJ"
+" ";" ";"..Manj kot 1 mesec";2 M;3 M;2 M;2 M;3 M;2 M;2 M;3 M;2 M;3 M
+" ";" ";"..Od 1 do 5 mesecev";16;25;24;26;25;25;24;22;20;20
+" ";" ";"..Od 6 do 11 mesecev";6;13;14;15;16;18;16;14;13;11
+" ";" ";"..Od 12 do 23 mesecev";9;10;19;20;22;23;22;20;18;14
+" ";" ";"..24 in veè mesecev";12;10;17;21;25;33;34;32;27;20
+
+"Vir: Statistièni urad Republike Slovenije."
+
+"Povezane vsebine: "
+"- (seznam "
+"HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-"
+"e=7788 target=_blank) Metodološka pojasnila "
+
+"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
+"teritorialnih enot v Evropski uniji (The Classification  of "
+"Territorial Units for Statistics) – NUTS ((seznam "
+"HREF=http://www.stat.si/StatWeb/glavnanavigacija/metode-in-klasifikac-"
+"ije/klasifikacije TARGET=_blank) opis in pojasnila), raven NUTS 2. "
+"Podatki o spremembah posameznih kohezijskih regij so dostopni tudi na "
+"(seznam HREF=http://www.stat.si/dokument/8483 TARGET=_blank) povezavi."
+
