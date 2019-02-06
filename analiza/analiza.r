@@ -13,12 +13,12 @@ names(zdruzena)[3] <- "brezposelnost_odvisna_od_trajanja_brezposelnosti"
 graf <- ggplot() + 
   geom_point(aes(x=zdruzena$brezposelnost_odvisna_od_trajanja_brezposelnosti,
                  y =zdruzena$Brezposelnost_v_Sloveniji, 
-                 colour= zdruzena$leta, size= zdruzena$trajanje
-                 )) +
+                 colour= zdruzena$leta, shape= zdruzena$trajanje)) +
   geom_smooth(aes(x= zdruzena$brezposelnost_odvisna_od_trajanja_brezposelnosti,
                   y=zdruzena$Brezposelnost_v_Sloveniji), method = "lm") + 
   xlab("Brezposelnost po trajanju brezposelnosti") + 
   ylab("Brezposelnost v Sloveniji") 
-graf <- (graf + labs(colour="tip gospodinjstva", size="leta"))
+graf <- (graf + labs(shape="tip gospodinjstva", colour="leta"))
 
 print(graf)
+
