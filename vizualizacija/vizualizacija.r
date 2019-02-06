@@ -23,12 +23,14 @@ regije2017[11,1] <- "GoriĹˇka"
 regije2017[10,1] <- "Notranjsko-kraĹˇka"
 regije2017[6,1] <- "Spodnjeposavska"
 
+regije_zemljevid<- regije2017
+
 ggplot(slovenija, aes(x=long, y=lat, group=group, fill=NAME_1)) +
   geom_polygon() +
   labs(title="Slovenija - osnovna slika") +
   theme(legend.position="none")
 
-ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
+ggplot() + geom_polygon(data=left_join(slovenija, regije_zemljevid, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stevilo)) +
   ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
 
