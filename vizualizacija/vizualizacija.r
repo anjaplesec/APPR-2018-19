@@ -17,10 +17,10 @@ regije <- as.data.frame(regije, stringAsFactors=FALSE)
 regije2017 <- regije[109:120,]
 
 #sprememba imen za regije 
-regije2017[3,1] <- "Koroška"
-regije2017[12,1] <- "Obalno-kraška"
-regije2017[11,1] <- "Goriška"
-regije2017[10,1] <- "Notranjsko-kraška"
+regije2017[3,1] <- "KoroĹˇka"
+regije2017[12,1] <- "Obalno-kraĹˇka"
+regije2017[11,1] <- "GoriĹˇka"
+regije2017[10,1] <- "Notranjsko-kraĹˇka"
 regije2017[6,1] <- "Spodnjeposavska"
 
 
@@ -72,7 +72,7 @@ graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
   xlab("leta") +
-  ylab("�tevilo brezposelnih") +
+  ylab("?tevilo brezposelnih") +
   ggtitle("Brezposelnost po spolu")
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 
