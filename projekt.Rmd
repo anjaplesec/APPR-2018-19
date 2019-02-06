@@ -109,6 +109,7 @@ print(graf_tip_gospodinjstva)
 
 Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je največ brezposelnih ljudi na Pomurskem, medtem ko na Koroškem in Posavskemto to ne drži.
 ```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
+
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stevilo)) +
   ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
@@ -133,7 +134,7 @@ source("analiza/analiza.r", encoding="UTF-8")
 ```
 
 
-***
+#Shiny
 Za na konec pa sem naredila še aplikacijo, ki prikazuje število brezposelnih ljudi v posameznih slovenskih občinah. 
 
 ```{r shiny, echo=FALSE}
