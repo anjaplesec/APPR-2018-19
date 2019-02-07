@@ -95,8 +95,8 @@ Iz spodnjega grafa lahko razberemo, da se povečuje brezposelnost ljudi z višjo
 print(graf_izobrazbe)
 ```
 
-Spodnji graf prikazuje brezposelnost glede na sploh in iz tega grafa lahko razberemo, da je do leta 2013 bilo število brezposelnih moških večje od števila brezposelnih žensk, medtem ko se je po letu 2013 ta trend obrnil, torej je bilo več brezposelnih žensko kot moških.
-Iz grafa je rezvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je dober znak za našo gospodarstvo.
+Spodnji graf prikazuje brezposelnost glede na spol in iz tega grafa lahko razberemo, da je do leta 2013 bilo število brezposelnih moških večje od števila brezposelnih žensk, medtem ko se je po letu 2013 ta trend obrnil, torej je bilo več brezposelnih žensk kot moških.
+Iz grafa je razvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je dober znak za našo gospodarstvo.
 ```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 2: Brezposelnost po spolu'}
 print(graf_brezposelnost_spol)
 ```
@@ -109,7 +109,7 @@ print(graf_tip_gospodinjstva)
 
 ***
 
-Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je največ brezposelnih ljudi na Pomurskem, medtem ko na Koroškem in Posavksem to ne drži. V Ljubljani pa je brezposelnost blizu povprečni brezposelnosti v Sloveniji leta 2017.
+Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je brezposelnost največja na Pomurskem, medtem ko je na Koroškem in Posavskem bistveno manjša. V Ljubljani pa je brezposelnost blizu povprečni brezposelnosti v Sloveniji leta 2017.
 ```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
 
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
@@ -118,7 +118,7 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
 ```
 
 Zemljevid prikazuje brezposelnost po Evropskih državah, vendar ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
-Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in na Poljskem. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo, Španijo ali z Združenem kraljestvo Velike Britanije in Severne Irske.
+Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in na Poljskem. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Španijo.
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stevilo),
@@ -129,7 +129,7 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 ***
 
 # Napredna analiza podatkov
-V tej fazi sem naredila primerjavo med brezposelnostjo v SLoveniji z rezposelnostjo glede na trajanje.
+V tej fazi sem naredila primerjavo med brezposelnostjo v Sloveniji glede na časovna obdobja v katerem so osebe bile nezaposlene.
 
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")

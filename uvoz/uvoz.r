@@ -39,16 +39,15 @@ brezposelni <- uvozi.brezposelni()
 
 #uvoz brezposelnosti glede na trajanje brezposelnosti
 uvozi.trajanje_brezposelnosti <- function(trajanje) {
-  stolpci <- c("l", "spol", "trajanje", 2008:2017)
+  stolpci <- c("l", "spol", "p", "t", "r", "trajanje", 2008:2017)
   podatki <- read_csv2("podatki/trajanje_brezposelnosti.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
-                       skip=7, n_max=5) %>% .[, -(2:1)] %>%
-    melt(id.vars="trajanje", variable.name="leta", value.name="stevilo") %>%
-    mutate(stevilo=parse_number(stevilo))
+                       skip=7, n_max=5) %>% .[, -(5:1)] %>%
+    melt(id.vars="trajanje", variable.name="leta", value.name="stevilo")
 }
-
 trajanje_brezposelnosti <- uvozi.trajanje_brezposelnosti()
+
 
 #uvoz brezposelnosti glede na tip gospodinjstva
 uvozi.tip_gospodinjstva <- function(gopodinjstvo) {

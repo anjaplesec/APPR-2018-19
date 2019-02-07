@@ -14,7 +14,7 @@ graf <- ggplot() +
   geom_point(aes(x=zdruzena$brezposelnost_odvisna_od_trajanja_brezposelnosti,
                  y =zdruzena$Brezposelnost_v_Sloveniji, 
                  colour= zdruzena$leta, shape= zdruzena$trajanje)) +
-  geom_smooth(aes(x= zdruzena$brezposelnost_odvisna_od_trajanja_brezposelnosti,
+  stat_smooth(aes(x= zdruzena$brezposelnost_odvisna_od_trajanja_brezposelnosti,
                   y=zdruzena$Brezposelnost_v_Sloveniji), method = "lm") + 
   xlab("Brezposelnost po trajanju brezposelnosti") + 
   ylab("Brezposelnost v Sloveniji") 
