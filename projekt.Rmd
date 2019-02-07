@@ -110,7 +110,7 @@ print(graf_tip_gospodinjstva)
 ***
 
 Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je brezposelnost največja na Pomurskem, medtem ko je na Koroškem in Posavskem bistveno manjša. V Ljubljani pa je brezposelnost blizu povprečni brezposelnosti v Sloveniji leta 2017.
-```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah'}
+```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah' }
 
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stevilo)) +

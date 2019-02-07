@@ -79,6 +79,7 @@ uvozi.statistične_regije <- function(regije) {
 statistične_regije <- uvozi.statistične_regije()
 
 
+
 #uvoz brezposelnosti glede na države
 uvozi.brezposelnost_drzave <- function(drzava) {
   stolpci <- c("drzava", 2008:2017)
