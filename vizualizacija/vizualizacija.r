@@ -8,7 +8,7 @@ library(mosaic)
 
 
 slovenija <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_SVN_shp.zip", 
-                             "gadm36_SVN_2") %>% 
+                             "gadm36_SVN_2", encoding="Windows-1250") %>% 
   fortify()
 
 #gledamo samo leta 2017
