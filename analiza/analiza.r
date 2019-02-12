@@ -18,7 +18,7 @@ graf <- ggplot() +
                   y=zdruzena$Brezposelnost_v_Sloveniji), method = "lm") + 
   xlab("Brezposelnost po trajanju brezposelnosti") + 
   ylab("Brezposelnost v Sloveniji") 
-graf <- (graf + labs(shape="tip gospodinjstva", colour="leta"))
+graf <- (graf + labs(shape="trajanje brezposelnosti", colour="leta"))
 
 print(graf)
 

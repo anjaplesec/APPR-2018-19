@@ -72,7 +72,7 @@ graf_brezposelnost_spol <- ggplot(data = brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
   xlab("leta") +
-  ylab("?tevilo brezposelnih") +
+  ylab("stevilo brezposelnih") +
   ggtitle("Brezposelnost po spolu")
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 

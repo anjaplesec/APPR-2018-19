@@ -26,7 +26,7 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Analiza brezposelnosti
 
-V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezposelnost glede na starost, spol in izobrazbo ter glede na statistične regije v Sloveniji. Za na konec bom primerjala brezposelnost po Slovenskih občinah ter brezposelnost v Sloveniji v primerjavi z drugimi evropskimi državami.
+V tem projektu bom obravnavala brezposelnost v Sloveniji. Analizirala bom brezposelnost glede na starost, spol in izobrazbo ter glede na statistične regije v Sloveniji. Za na konec bom primerjala brezposelnost po slovenskih občinah ter brezposelnost v Sloveniji v primerjavi z drugimi evropskimi državami.
 
 ![](slike/brezposelnost.jpg)
 
@@ -38,7 +38,7 @@ source("uvoz/uvoz.r", encoding="UTF-8")
 
 Podatke sem pridobila iz spletne strani Statističnega urada Republike Slovenije(SURS) in iz Eurostat-a. Vsi podatki so v okliki CSV. 
 
-Podatke imam razpredelnicah v obliki *tidy data*.
+Podatke imam v razpredelnicah v obliki *tidy data*.
 
 
 1. `brezposelnost_izo` - podatki o brezposelnosti glede na izobrazbo
@@ -117,7 +117,7 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
   ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
 ```
 
-Zemljevid prikazuje brezposelnost po Evropskih državah, vendar ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
+Zemljevid prikazuje brezposelnost po Evropskih državah, ampak ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
 Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in na Poljskem. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Španijo.
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
@@ -129,7 +129,7 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 ***
 
 # Napredna analiza podatkov
-V tej fazi sem naredila primerjavo med brezposelnostjo v Sloveniji glede na časovna obdobja v katerem so osebe bile nezaposlene.
+V tej fazi sem naredila primerjavo brezposelnosti v Sloveniji glede na časovna obdobja v katerem so osebe bile nezaposlene.
 
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")
