@@ -41,46 +41,45 @@ Podatke sem pridobila iz spletne strani Statističnega urada Republike Slovenije
 Podatke imam v razpredelnicah v obliki *tidy data*.
 
 
-1. `brezposelnost_izo` - podatki o brezposelnosti glede na izobrazbo
-   - `leto` - spremenljivka: pove nam, katero leto opazujemo
-   - `spol` - spremenljivka: spol brezposelnega
-   - `izobrazba` - spremenljivka: stopnja izobrazbe brezposelne osebe
-   - `stevilo` - spremenljivka: pove nam število brazposelnih pri določeni izobrazbi
+1. `brezposelnost_izobrazba` - podatki o brezposelnosti glede na izobrazbo v Sloveniji
+   - `leto` - spremenljivka: pove nam, katero leto opazujemo,
+   - `izobrazba` - spremenljivka: stopnja izobrazbe brezposelne osebe,
+   - `stevilo` - meritev: pove nam število brezposelnih oseb pri določeni izobrazbi(v 1000).
   
-2. `brezposelni` - podatki o brezposelnosti glede na starost in spol
-   - `leta` - spremenljivka: pove nam, katero leto opazujemo
-   - `spol` - spremenljivka: pove nam spol brezposelnega
-   - `stevilo` - spremenljivka: pove nam število brezposelnih glede na spol in leto
+2. `vsi_brezposelni` - podatki o brezposelnosti glede na starost in spol v Sloveniji,
+   - `leta` - spremenljivka: pove nam katero leto opazujemo,
+   - `spol` - spremenljivka: pove nam spol brezposelnega,
+   - `stevilo` - meritev: pove nam število brezposelnih glede na spol in leto(v 1000).
 
-3. `trajanje_brezposelnosti` - podatki o trajanju brezposelnosti
-   - `trajanje` - spremenljivka: pove nam, koliko časa je oseba že brezposelna
-   - `spol` - spremenljivka: spol brezposelnega
-   - `leta` - spremenljivka: pove nam, katero leto opazujemo
-   - `stevilo` - spremenljivka: pove nam število brezposelnih
+3. `trajanje_iskanje_dela` - podatki o brezposelnosti po trajanju iskanja dela v Sloveniji,
+   - `trajanje` - spremenljivka: pove nam, koliko časa brezposelna oseba išče delo,
+   - `spol` - spremenljivka: spol brezposelnega,
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo,
+   - `stevilo` - meritev: pove nam število brezposelnih(v 1000), glede na to kako dolgo si brezposelna oseba že išče delo.
 
-4. `tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva
-   - `leto` - spremenljivka: pove nam, katero leto opazujemo
-   - `gospodinjstvo` - spremenljivka: pove nam kakšnega tipa je gospodinjstvo(Enočlansko gospodinjstvo, Samohranilec, Par brez otrok,..)
-   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na tip gospodinjstva
+4. `tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva v Sloveniji,
+   - `leto` - spremenljivka: pove nam, katero leto opazujemo,
+   - `gospodinjstvo` - spremenljivka: pove nam kakšnega tipa je gospodinjstvo(Enočlansko gospodinjstvo, Samohranilec, Par brez otrok,..),
+   - `stopnja` - meritev: pove nam stopnjo brezposelnih(v %), glede na tip gospodinjstva.
 
 
-5. `statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije
-   - `regija` - spremenljivka: pove nam katero statistično regijo opazujemo(Koroška, Posavska, Goriška,..)
-   - `leto` - spremenljivka: pove nam, katero leto opazujemo
-   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno statistično regijo
+5. `statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije,
+   - `regija` - spremenljivka: pove nam katero statistično regijo opazujemo(Koroška, Posavska, Goriška,..),
+   - `leto` - spremenljivka: pove nam, katero leto opazujemo,
+   - `stopnja` - meritev: pove nam stopnjo brezposelnih(v %) glede na posamezno statistično regijo.
    
 
-6. `brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah
-   - `država` - spremenljivka: pove nam katero državo opazujemo(Slovenija, Nemčija, Italija,..)
-   - `leta` - spremenljivka: pove nam, katero leto opazujemo
-   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno državo
+6. `brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah,
+   - `država` - spremenljivka: pove nam katero državo opazujemo(Slovenija, Nemčija, Italija,..),
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo,
+   - `stevilo` - meritev: pove nam stopnjo brezposelnih(v %), glede na posamezno državo.
 
 To tabelo sem dodala za bolj zanimivo analizo v zadnji fazi.
  
-7. `zadnja_faza` - podatki o brezposelnosti v posameznih slovenskih občinah
-   - `obcina` - spremenljivka: pove nam katero občino opazujemo(Bled, Maribor, Piran,..)
-   - `leta` - spremenljivka: pove nam, katero leto opazujemo
-   - `stevilo` - spremenljivka: pove nam število brezposelnih, glede na posamezno državo
+7. `obcine` - podatki o brezposelnosti v posameznih slovenskih občinah,
+   - `obcina` - spremenljivka: pove nam katero občino opazujemo(Bled, Maribor, Piran,..),
+   - `leta` - spremenljivka: pove nam, katero leto opazujemo,
+   - `stevilo` - meritev: pove nam število brezposelnih, glede na posamezno slovensko občino.
 
 ***
 
@@ -91,39 +90,42 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
 Iz spodnjega grafa lahko razberemo, da se povečuje brezposelnost ljudi z višjo ali visokošolsko izobrazbo, kar je tudi posledica našega razvoja družbe, saj se vedno več ljudi odloča za študij. Opazimo lahko tudi, da se zmanjšuje brezposelnost ljudi, ki so brez izborazbe, imajo samo osnovnoškolsko izobrazbo ali pa nižjo ozirma srednje poklicno izobrazbo, kar je spet posledica že zgoraj omenjenega ravoja družbe.
-```{r graf1, echo=FALSE, fig.align='center',warning=FALSE, fig.cap='Graf 1: Brezposelnost po izobrazbi'}
+```{r graf1, echo=FALSE, fig.align='center',warning=FALSE}
 print(graf_izobrazbe)
 ```
 
 Spodnji graf prikazuje brezposelnost glede na spol in iz tega grafa lahko razberemo, da je do leta 2013 bilo število brezposelnih moških večje od števila brezposelnih žensk, medtem ko se je po letu 2013 ta trend obrnil, torej je bilo več brezposelnih žensk kot moških.
 Iz grafa je razvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je dober znak za našo gospodarstvo.
-```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 2: Brezposelnost po spolu'}
+```{r graf2, echo=FALSE, fig.align='center', warning=FALSE}
 print(graf_brezposelnost_spol)
 ```
 
 Iz grafa vidimo, da so se vse brezposelnosti od leta 2011 zmanjšale, najbolj očitno pa se je zmanjšala brezposelnost enočlanskega gospodinjstva.
 
-```{r graf3, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 3: Brezposelnost glede na tip gospodinjstva'}
+```{r graf3, echo=FALSE, fig.align='center', warning=FALSE}
 print(graf_tip_gospodinjstva)
 ```
 
 ***
 
 Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je brezposelnost največja na Pomurskem, medtem ko je na Koroškem in Posavskem bistveno manjša. V Ljubljani pa je brezposelnost blizu povprečni brezposelnosti v Sloveniji leta 2017.
-```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 1: brezposelnost po statističnih regijah' }
+```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE}
 
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
-                        aes(x=long, y=lat, group=group, fill=stevilo)) +
-  ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
+                        aes(x=long, y=lat, group=group, fill=stopnja)) +
+  ggtitle("Stopnja brezposelnosti po statističnih regijah leta 2017") + 
+  xlab("") + ylab("") 
+
+
 ```
 
 Zemljevid prikazuje brezposelnost po Evropskih državah, ampak ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
-Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in na Poljskem. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Španijo.
-```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Zemljevid 2: Brezposelnost po Evropi'}
+Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španiji. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Španijo.
+```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
-                        aes(x=long, y=lat, group=group, fill=stevilo),
+                        aes(x=long, y=lat, group=group, fill=stopnja),
                         colour = "black") +
-  ggtitle("Število brezposelnih v Evropi leta 2017") + xlab("") + ylab("") 
+  ggtitle("Stopnja brezposelnih v Evropi leta 2017") + xlab("") + ylab("")
 ```
 
 ***
@@ -142,4 +144,6 @@ Za na konec pa sem naredila še aplikacijo, ki prikazuje število brezposelnih l
 ```{r shiny, echo=FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
+
+#Zaključek
 

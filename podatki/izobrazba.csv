@@ -1,0 +1,33 @@
+"Brezposelni po šolski izobrabi po: KOHEZIJSKA REGIJA, SPOL, LETO,"
+"MERITVE , IZOBRAZBA"
+
+" ";" ";" ";"Število (v 1000)";" ";" ";" ";" "
+" ";" ";" ";"Brez izobrazbe, nepopolna osnovnošolska";"Osnovnošolska";"Nižja ali srednja poklicna";"Srednja strokovna, splošna";"Višješolska, visokošolska"
+"SLOVENIJA"
+" ";"Spol - SKUPAJ"
+" ";" ";"2008";1 M;8;12;16;8
+" ";" ";"2009";2 M;11;18;22;8
+" ";" ";"2010";2 M;15;20;27;11
+" ";" ";"2011";2 M;15;25;28;14
+" ";" ";"2012";1 M;16;24;30;18
+" ";" ";"2013";1 M;19;29;34;19
+" ";" ";"2014";1 M;17;29;32;20
+" ";" ";"2015";N;15;24;33;19
+" ";" ";"2016";1 M;13;18;27;21
+" ";" ";"2017";N;10;15;23;19
+
+"Vir: Statistièni urad Republike Slovenije."
+
+"Povezane vsebine: "
+"- (seznam "
+"HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-"
+"e=7788 target=_blank) Metodološka pojasnila "
+
+"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
+"teritorialnih enot v Evropski uniji (The Classification  of "
+"Territorial Units for Statistics) – NUTS ((seznam "
+"HREF=http://www.stat.si/StatWeb/glavnanavigacija/metode-in-klasifikac-"
+"ije/klasifikacije TARGET=_blank) opis in pojasnila), raven NUTS 2. "
+"Podatki o spremembah posameznih kohezijskih regij so dostopni tudi na "
+"(seznam HREF=http://www.stat.si/dokument/8483 TARGET=_blank) povezavi."
+

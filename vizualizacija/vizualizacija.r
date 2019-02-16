@@ -30,8 +30,9 @@ ggplot(slovenija, aes(x=long, y=lat, group=group, fill=NAME_1)) +
   theme(legend.position="none")
 
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
-                        aes(x=long, y=lat, group=group, fill=stevilo)) +
-  ggtitle("Število brezposelnih na 1000 ljudi leta 2017") + xlab("") + ylab("") 
+                        aes(x=long, y=lat, group=group, fill=stopnja)) +
+  ggtitle("Stopnja brezposelnosti po statističnih regijah leta 2017") + 
+  xlab("") + ylab("") 
 
 
 
@@ -46,8 +47,8 @@ Evropa <- filter(Evropa, long < 43 & long > -30 & lat > 30 & lat < 73)
 
 drzave <- brezposelnost_drzave
 drzave <- as.data.frame(drzave, stringAsFactors=FALSE)
-drzave2017 <- drzave[307:340,]
-drzave2017[6, 1] <- "Germany"
+drzave2017 <- drzave[280:310,]
+drzave2017[5, 1] <- "Germany"
 
 
 ggplot(Evropa, aes(x=long, y=lat, group=group, fill=NAME)) +
@@ -56,31 +57,29 @@ ggplot(Evropa, aes(x=long, y=lat, group=group, fill=NAME)) +
   theme(legend.position="none")
 
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
-                        aes(x=long, y=lat, group=group, fill=(stevilo)),
+                        aes(x=long, y=lat, group=group, fill=stopnja),
                         colour = "black") +
-  ggtitle("Število brezposelnih v Evropi leta 2017") + xlab("") + ylab("") 
+  ggtitle("Stopnja brezposelnih v Evropi leta 2017") + xlab("") + ylab("")
 
 #grafi
-graf_izobrazbe <- ggplot(data = brezposelnost_izo) + 
+graf_izobrazbe <- ggplot(data = brezposelnost_izobrazba) + 
   aes(x =factor(leta), y = stevilo)+ 
   geom_bar(stat="identity", aes(fill=izobrazba)) + 
   xlab("leta") + 
   ylab("število brezposelnih") +
-  ggtitle("Brezposelnost po izobrazbi")
+  ggtitle("Brezposelnost po izobrazbi in letih v Sloveniji")
 
-graf_brezposelnost_spol <- ggplot(data = brezposelni) +
+graf_brezposelnost_spol <- ggplot(data = vsi_brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
   xlab("leta") +
-  ylab("stevilo brezposelnih") +
-  ggtitle("Brezposelnost po spolu")
+  ylab("število brezposelnih") +
+  ggtitle("Brezposelnost po spolu in letih v Sloveniji")
 
-graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stevilo, 
+graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stopnja, 
                                      colour = gospodinjstvo)) +
   geom_line(size = 1, lineend = "round" ) +
   xlab("leta") +
   ylab("število brezposelnih") +
-  ggtitle("Brezposelnost glede na tip gospodinjstva")
-
-
+  ggtitle("Stopnja brezposelnost glede na tip gospodinjstva")
 

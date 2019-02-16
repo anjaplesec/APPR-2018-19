@@ -12,18 +12,19 @@ library(abind)
 
 #uvoz brezposelnosti izobrazba
 uvozi.brezposelnost_izo <- function(izobrazba) {
-  stolpci <- c("regija", "leta", "spol", "Brez izobrazbe", "Osnovnosolska", 
+  stolpci <- c("regija", "x", "leta", "Brez izobrazbe", "Osnovnosolska", 
                "Nizja ali srednja poklicna", "Srednja strokovna, splosna" , 
                "Visjesolska, visokosolska")
-  podatki <- read_csv2("podatki/brazposelnost_izo.csv", 
+  podatki <- read_csv2("podatki/izobrazba.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
-                       skip=6, n_max=30) %>% .[, -(1:1)] %>% 
-    melt(id.vars= c("leta", "spol"),  variable.name="izobrazba", value.name="stevilo") %>%
-    fill(1) %>% drop_na(2) %>% mutate(stevilo=parse_number(stevilo, na="N"))
+                       skip=7, n_max=10) %>% .[, -(1:2)] %>%
+    melt(id.vars= "leta",  variable.name="izobrazba", value.name="stevilo") %>%
+    mutate(stevilo=parse_number(stevilo, na="N"))
 }
+brezposelnost_izobrazba <- uvozi.brezposelnost_izo()
 
-brezposelnost_izo <- uvozi.brezposelnost_izo()
+
 
 #uvoz brezposelnosti
 uvozi.brezposelni <- function(ljudje) {
@@ -35,7 +36,7 @@ uvozi.brezposelni <- function(ljudje) {
     melt(id.vars="spol", variable.name="leta", value.name="stevilo")
 }
 
-brezposelni <- uvozi.brezposelni()
+vsi_brezposelni <- uvozi.brezposelni()
 
 #uvoz brezposelnosti glede na trajanje brezposelnosti
 uvozi.trajanje_brezposelnosti <- function(trajanje) {
@@ -46,24 +47,22 @@ uvozi.trajanje_brezposelnosti <- function(trajanje) {
                        skip=7, n_max=5) %>% .[, -(5:1)] %>%
     melt(id.vars="trajanje", variable.name="leta", value.name="stevilo")
 }
-trajanje_brezposelnosti <- uvozi.trajanje_brezposelnosti()
+trajanje_iskanje_dela <- uvozi.trajanje_brezposelnosti()
 
 
 #uvoz brezposelnosti glede na tip gospodinjstva
 uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
-  stolpci <- c("regija", "leta", "gospodinjstvo", "stevilo")
-  podatki <- read_csv2("podatki/tip_gospodinjstva.csv", 
+  stolpci <- c("regija", "leta", "gospodinjstvo", "stopnja")
+  podatki <- read_csv2("podatki/gospodinjstvo.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
-                       skip=5, n_max=49) %>% .[, -(1:1)]  %>%
-    melt(id.vars=c("leta", "gospodinjstvo"), variable.name="regija", value.name="stevilo") %>%
-    fill(1)  %>% drop_na(2)
+                       skip=5, n_max=70) %>% .[, -1] %>%
+    melt(id.vars=c("leta", "gospodinjstvo"), variable.name="regija",
+         value.name="stopnja") %>%
+    fill(1) %>% drop_na(2) %>% mutate(stopnja = parse_number(stopnja))
 }
 tip_gospodinjstva <- uvozi.tip_gospodinjstva()
 tip_gospodinjstva$regija <- NULL
-
-
-
 
 #uvoz brezposelnosti glede na statistične regije
 uvozi.statistične_regije <- function(regije) {
@@ -72,8 +71,8 @@ uvozi.statistične_regije <- function(regije) {
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
                        skip=4, n_max=12) %>%
-    melt(id.vars="regija", variable.name="leta", value.name="stevilo")  %>%
-    mutate(stevilo = parse_number(stevilo))
+    melt(id.vars="regija", variable.name="leta", value.name="stopnja")  %>%
+    mutate(stopnja = parse_number(stopnja))
 }
 
 statistične_regije <- uvozi.statistične_regije()
@@ -83,16 +82,14 @@ statistične_regije <- uvozi.statistične_regije()
 #uvoz brezposelnosti glede na države
 uvozi.brezposelnost_drzave <- function(drzava) {
   stolpci <- c("drzava", 2008:2017)
-  podatki <- read_csv2("podatki/brezposelnost_drzave.csv", 
+  podatki <- read_csv2("podatki/drzave.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
-                       skip=11, n_max=34) %>%
-    melt(id.vars="drzava", variable.name="leta", value.name="stevilo")
+                       skip=11, n_max=31) %>%
+    melt(id.vars="drzava", variable.name="leta", value.name="stopnja")
 }
 
 brezposelnost_drzave <- uvozi.brezposelnost_drzave()
-brezposelnost_drzave$stevilo <- round(brezposelnost_drzave$stevilo)
-
 
 #uvoz brazposelnosti za 4. fazo
 uvozi.4faza <- function(faza) {
@@ -105,5 +102,5 @@ uvozi.4faza <- function(faza) {
     mutate(stevilo=parse_number(stevilo, na="N"))
 }
 
-zadnja_faza <- uvozi.4faza()
+obcine <- uvozi.4faza()
 

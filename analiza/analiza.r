@@ -2,6 +2,42 @@
 library(ggplot2)
 library(GGally)
 library(mgcv)
+#NAPOVED BREZPOSELNOSTI GLEDE NA IZOBRAZBO
+
+tabela.preciscena <- brezposelnost_izobrazba %>% filter(izobrazba="visje, visokosolska")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 podatki <- trajanje_brezposelnosti
 podatki1 <- drzave %>% filter(drzava == "Slovenia")
