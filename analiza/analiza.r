@@ -71,7 +71,7 @@ model4 <- ggplot(tabela.preciscena4) +
   aes(x=leta, y=stevilo) + 
   ylab("število brezposelnih") +
   geom_point(size = 3) + 
-  ggtitle("nižje ali srednja poklicna izobrazba") + 
+  ggtitle("nižja ali srednja poklicna izobrazba") + 
   geom_smooth(method="lm", formula = y ~ x, fullrange = TRUE, se = FALSE) 
 novi.podatki4 <- data.frame(leta = seq(2018, 2022, 1))
 napoved4 <- novi.podatki4 %>% mutate(stevilo=predict(star4, .))
