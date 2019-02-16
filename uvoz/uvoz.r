@@ -32,8 +32,9 @@ uvozi.brezposelni <- function(ljudje) {
   podatki <- read_csv2("podatki/brezposelni.csv", 
                        col_names=stolpci,
                        locale=locale(encoding="Windows-1250"),
-                       skip=6, n_max=2) %>% .[, -(1:2)] %>% 
+                       skip=6, n_max=2) %>% .[, -(1:2)] %>%
     melt(id.vars="spol", variable.name="leta", value.name="stevilo")
+  
 }
 
 vsi_brezposelni <- uvozi.brezposelni()
