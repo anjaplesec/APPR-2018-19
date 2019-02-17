@@ -94,7 +94,8 @@ Iz grafa je razvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je po
 print(graf_brezposelnost_spol)
 ```
 
-Iz grafa vidimo, da so se vse brezposelnosti od leta 2011 zmanjšale, najbolj očitno pa se je zmanjšala brezposelnost enočlanskega gospodinjstva.
+Iz grafa vidimo, da so se vse brezposelnosti od leta 2011 zmanjšale, najbolj očitno pa se je zmanjšala brezposelnost samohranileca z najmlajšim otrokom starim manj kot 25 let.
+.
 
 ```{r graf3, echo=FALSE, warning=FALSE, fig.align='center', fig.cap=''}
 print(graf_tip_gospodinjstva)
@@ -102,7 +103,7 @@ print(graf_tip_gospodinjstva)
 
 ***
 
-Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je brezposelnost največja na Pomurskem in  v Obalno-kraški regiji, saj je večina oseb, ki so brezposelni starejših od 50 let ali pa so brez strokovne izobrazbe, zato jih podjetja nočejo zaposliti. Za Obalno-kraško regijo pa velja tudi problem sive ekonomije, saj v času turistične sezone primanjkuje kadrov na področju gostinstva in turizma. 
+Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je brezposelnost največja na Pomurskem in  v Obalno-kraški regiji, saj je večina brezposelnih oseb starejših od 50 let ali pa so brez strokovne izobrazbe, zato jih podjetja nočejo zaposliti. Za Obalno-kraško regijo pa velja tudi problem sive ekonomije, saj v času turistične sezone primanjkuje kadrov na področju gostinstva in turizma. 
 Brezposelnost na Koroškem je najnižja med vsemi statističnimi regijami, saj številni Korošci odidejo na delo v Avstrijo, kjer so priložnosti za boljši zaslužek precej večje kot na Koroškem. 
 
 ```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE}
@@ -116,7 +117,7 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
 ```
 
 Zemljevid prikazuje brezposelnost po Evropskih državah, ampak ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
-Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španiji. V  Španiji je največji problem siva ekonomija, saj imajo šibek nadzor in majhe kazni. Problem pa je tudi v povišani inflacija, kar vpliva na višje cene naftnih derivatov in s tem na brezposelnost. Visoka brezposelnost v Grčiji pa je povezana predvsem z gospodoarsko krizo v kateri so se znašli.
+Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španiji. V  Španiji je največji problem siva ekonomija, saj imajo šibek nadzor in majhe kazni. Problem pa je tudi v povišani inflacija, kar vpliva na višje cene naftnih derivatov in s tem na brezposelnost. Visoka brezposelnost v Grčiji pa je povezana predvsem z gospodarsko krizo v kateri so se znašli.
 Slovenija velja za državo, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo, Češko in Malto. 
 
 
