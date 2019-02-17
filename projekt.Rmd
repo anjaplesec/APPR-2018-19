@@ -90,19 +90,19 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
 Iz spodnjega grafa lahko razberemo, da se povečuje brezposelnost ljudi z višjo ali visokošolsko izobrazbo, kar je tudi posledica našega razvoja družbe, saj se vedno več ljudi odloča za študij. Opazimo lahko tudi, da se zmanjšuje brezposelnost ljudi, ki so brez izborazbe, imajo samo osnovnoškolsko izobrazbo ali pa nižjo ozirma srednje poklicno izobrazbo, kar je spet posledica že zgoraj omenjenega ravoja družbe.
-```{r graf1, echo=FALSE, fig.align='center',warning=FALSE}
+```{r graf1, echo=FALSE, fig.align='center',warning=FALSE,fig.align='center', fig.cap=''}
 print(graf_izobrazbe)
 ```
 
 Spodnji graf prikazuje brezposelnost glede na spol in iz tega grafa lahko razberemo, da je do leta 2013 bilo število brezposelnih moških večje od števila brezposelnih žensk, medtem ko se je po letu 2013 ta trend obrnil, torej je bilo več brezposelnih žensk kot moških.
 Iz grafa je razvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je dober znak za našo gospodarstvo.
-```{r graf2, echo=FALSE, fig.align='center', warning=FALSE}
+```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.align='center', fig.cap=''}
 print(graf_brezposelnost_spol)
 ```
 
 Iz grafa vidimo, da so se vse brezposelnosti od leta 2011 zmanjšale, najbolj očitno pa se je zmanjšala brezposelnost enočlanskega gospodinjstva.
 
-```{r graf3, echo=FALSE, warning=FALSE}
+```{r graf3, echo=FALSE, warning=FALSE, fig.align='center', fig.cap=''}
 print(graf_tip_gospodinjstva)
 ```
 
@@ -132,11 +132,11 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 
 # Napredna analiza podatkov
 
-```{r analiza, echo=FALSE, message=FALSE}
+```{r analiza, echo=FALSE, message=FALSE, warning=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-```{r skupaj, echo=FALSE, warning=FALSE}
+```{r skupaj, echo=FALSE, warning=FALSE, fig.align='center', fig.cap=''}
 print(skupaj)
 ```
 

@@ -65,6 +65,7 @@ uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
 tip_gospodinjstva <- uvozi.tip_gospodinjstva()
 tip_gospodinjstva$regija <- NULL
 
+
 #uvoz brezposelnosti glede na statistične regije
 uvozi.statistične_regije <- function(regije) {
   stolpci <- c("regija", 2008:2017)

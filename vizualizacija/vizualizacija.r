@@ -67,14 +67,14 @@ graf_izobrazbe <- ggplot(data = brezposelnost_izobrazba) +
   geom_bar(stat="identity", aes(fill=izobrazba)) + 
   xlab("leta") + 
   ylab("število brezposelnih") +
-  ggtitle("Brezposelnost po izobrazbi in letih v Sloveniji")
+  ggtitle("Brezposelnost po izobrazbi v Sloveniji")
 
 graf_brezposelnost_spol <- ggplot(data = vsi_brezposelni) +
   aes(x=leta, y=stevilo) +
   geom_bar(stat="identity", aes(fill=spol)) +
   xlab("leta") +
   ylab("število brezposelnih") +
-  ggtitle("Brezposelnost po spolu in letih v Sloveniji")
+  ggtitle("Brezposelnost po spolu v Sloveniji")
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stopnja, 
                                      colour = gospodinjstvo)) +
@@ -82,4 +82,3 @@ graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stopnj
   xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("Stopnja brezposelnost glede na tip gospodinjstva")
-
