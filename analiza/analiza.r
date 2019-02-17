@@ -19,8 +19,6 @@ novi.podatki1 <- data.frame(leta = seq(2018, 2022))
 napoved1 <- novi.podatki1 %>% mutate(stevilo=predict(star, .))
 model1 <- model1 + geom_point(data=napoved1, aes(x=leta, y=stevilo), color="red", size=3) + 
   scale_x_continuous(breaks = seq(2008,2022, 3))
-print(model1)
-
 
 #BREZ IZOBRAZBE 
 tabela.preciscena2 <- brezposelnost_izobrazba %>% filter(izobrazba =="Brez izobrazbe")
