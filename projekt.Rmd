@@ -127,7 +127,7 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 
 # Napoved brezposelnosti
 
-```{r analiza, echo=FALSE, message=FALSE}
+```{r analiza, echo=FALSE, message=FALSE, warning=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")
 ```
 
