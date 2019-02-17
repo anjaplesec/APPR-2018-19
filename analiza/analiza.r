@@ -90,5 +90,5 @@ model5 <- model5 + geom_point(data=napoved5, aes(x=leta, y=stevilo), color="red"
   scale_x_continuous(breaks =  seq(2008,2022, 3))
 
 
-skupaj <- ggarrange(model2, model3, model4, model5, model1, common.legend = TRUE, 
-                    legend = "bottom", warning = FALSE)
+skupaj <- ggarrange(model2, model3, model4, model5, model1)
+print(skupaj)

@@ -130,11 +130,17 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 ```
 
 
-```{r skupaj, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
-print(skupaj)
-```
 ***
 
+# Napredna analiza podatkov
+
+```{r analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding="UTF-8")
+```
+
+```{r skupaj, echo=FALSE, warning=FALSE}
+print(skupaj)
+```
 
 #Shiny
 Za na konec pa sem naredila še aplikacijo, ki prikazuje število brezposelnih ljudi v posameznih slovenskih občinah. 
