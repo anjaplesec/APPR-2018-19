@@ -2,6 +2,7 @@
 library(ggplot2)
 library(GGally)
 library(mgcv)
+library(ggpubr)
 
 #NAPOVED BREZPOSELNOSTI VISJESOLSKA
 tabela.preciscena1 <- brezposelnost_izobrazba %>% filter(izobrazba =="Visjesolska, visokosolska")
