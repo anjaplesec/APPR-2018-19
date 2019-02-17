@@ -76,8 +76,8 @@ graf_brezposelnost_spol <- ggplot(data = vsi_brezposelni) +
   ggtitle("Brezposelnost po spolu v Sloveniji")
 
 
-tip_gospodinjstva[c(7,16,25, 34, 43, 52, 61),2] <- "Par ali samohranilec z najmlajšim otrokom starim manj kot 25 let"
-tip_gospodinjstva[c(8, 17, 26, 35, 44, 53, 62),2] <- "Par ali samohranilec z najmlajšim otrokom starim 25 let ali več"
+tip_gospodinjstva[c(7,16,25, 34, 43, 52, 61),2] <- "Par ali samohranilec z najmlajšim otrokom starim manj kot 25 let \nin drugimi osebami v gospodinjstvu	"
+tip_gospodinjstva[c(8, 17, 26, 35, 44, 53, 62),2] <- "Par ali samohranilec z najmlajšim otrokom starim 25 let ali več \nin drugimi osebami v gospodinjstvu"
 
 graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stopnja, 
                                      colour = gospodinjstvo)) +
@@ -85,6 +85,7 @@ graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stopnj
   xlab("leta") +
   ylab("število brezposelnih") +
   ggtitle("Stopnja brezposelnost glede na tip gospodinjstva") + 
-  scale_x_continuous(breaks =  seq(2011,2017))
+  scale_x_continuous(breaks =  seq(2011,2017)) + 
+  theme()
 print(graf_tip_gospodinjstva)
 

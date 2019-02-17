@@ -140,7 +140,7 @@ print(skupaj)
 #Shiny
 Za na konec pa sem naredila še aplikacijo, ki prikazuje število brezposelnih ljudi v posameznih slovenskih občinah. 
 
-```{r shiny, echo=FALSE}
+```{r shiny, echo=FALSE, warning=FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
 
