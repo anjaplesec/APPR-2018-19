@@ -90,13 +90,13 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
 Iz spodnjega grafa lahko razberemo, da se povečuje brezposelnost ljudi z višjo ali visokošolsko izobrazbo, kar je tudi posledica našega razvoja družbe, saj se vedno več ljudi odloča za študij. Opazimo lahko tudi, da se zmanjšuje brezposelnost ljudi, ki so brez izborazbe, imajo samo osnovnoškolsko izobrazbo ali pa nižjo ozirma srednje poklicno izobrazbo, kar je spet posledica že zgoraj omenjenega ravoja družbe.
-```{r graf1, echo=FALSE, fig.align='center',warning=FALSE,fig.align='center', fig.cap=''}
+```{r graf1, echo=FALSE, fig.align='center',warning=FALSE}
 print(graf_izobrazbe)
 ```
 
 Spodnji graf prikazuje brezposelnost glede na spol in iz tega grafa lahko razberemo, da je do leta 2013 bilo število brezposelnih moških večje od števila brezposelnih žensk, medtem ko se je po letu 2013 ta trend obrnil, torej je bilo več brezposelnih žensk kot moških.
 Iz grafa je razvidno tudi, da se brezposelnost na splošno zmanjšuje, kar je dober znak za našo gospodarstvo.
-```{r graf2, echo=FALSE, fig.align='center', warning=FALSE, fig.align='center', fig.cap=''}
+```{r graf2, echo=FALSE, fig.align='center', warning=FALSE}
 print(graf_brezposelnost_spol)
 ```
 
@@ -120,7 +120,8 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
 ```
 
 Zemljevid prikazuje brezposelnost po Evropskih državah, ampak ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
-Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španiji. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Španijo.
+Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španiji. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Češko. 
+
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.align='center', fig.cap=''}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stopnja),
@@ -136,7 +137,7 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-```{r skupaj, echo=FALSE, warning=FALSE, fig.align='center', fig.cap=''}
+```{r skupaj, echo=FALSE, warning=FALSE}
 print(skupaj)
 ```
 
