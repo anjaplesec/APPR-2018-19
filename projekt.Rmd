@@ -109,7 +109,7 @@ print(graf_tip_gospodinjstva)
 ***
 
 Spodnji zemljevid prikazuje brezposelnost v posameznih statističnih regijah. Iz zemljevida je lepo razvidno, da je brezposelnost največja na Pomurskem, medtem ko je na Koroškem in Posavskem bistveno manjša. V Ljubljani pa je brezposelnost blizu povprečni brezposelnosti v Sloveniji leta 2017.
-```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE, fig.align='center', fig.cap=''}
+```{r zemljevid1, echo=FALSE, fig.align='center', warning=FALSE}
 
 ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="regija")),
                         aes(x=long, y=lat, group=group, fill=stopnja)) +
@@ -122,7 +122,7 @@ ggplot() + geom_polygon(data=left_join(slovenija, regije2017, by=c("NAME_1"="reg
 Zemljevid prikazuje brezposelnost po Evropskih državah, ampak ni bilo podatkov za države Jugovzhodne Evrope in za Švico, tako da te države ne moremo vključiti v analizo brezposelnosti.
 Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španiji. Slovenija je država, ki ima malo brezposelnih ljudi, vendar se vseeno ne more primerjati z Nemčijo ali Češko. 
 
-```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE, fig.align='center', fig.cap=''}
+```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
                         aes(x=long, y=lat, group=group, fill=stopnja),
                         colour = "black") +
