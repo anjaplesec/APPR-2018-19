@@ -92,4 +92,3 @@ model5 <- model5 + geom_point(data=napoved5, aes(x=leta, y=stevilo), color="red"
 
 
 skupaj <- ggarrange(model2, model3, model4, model5, model1)
-print(skupaj)
