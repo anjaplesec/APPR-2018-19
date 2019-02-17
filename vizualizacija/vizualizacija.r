@@ -86,3 +86,4 @@ graf_tip_gospodinjstva <- ggplot(data = tip_gospodinjstva, aes(x=leta, y= stopnj
   ylab("število brezposelnih") +
   ggtitle("Stopnja brezposelnost glede na tip gospodinjstva") + 
   scale_x_continuous(breaks =  seq(2011,2017))
+

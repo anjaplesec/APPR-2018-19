@@ -118,7 +118,7 @@ Iz zemljevida lahko razberemo, da je največ brezposelnih v Grčiji in v Španij
 
 ```{r zemljevid2, echo=FALSE, fig.align='center', warning=FALSE}
 ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")),
-                        aes(x=long, y=lat, group=group, fill=stopnja) +
+                        aes(x=long, y=lat, group=group, fill=stopnja)) +
   ggtitle("Stopnja brezposelnih v Evropi leta 2017") + xlab("") + ylab("")
 ```
 
