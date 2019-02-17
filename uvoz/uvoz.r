@@ -39,18 +39,6 @@ uvozi.brezposelni <- function(ljudje) {
 
 vsi_brezposelni <- uvozi.brezposelni()
 
-#uvoz brezposelnosti glede na trajanje brezposelnosti
-uvozi.trajanje_brezposelnosti <- function(trajanje) {
-  stolpci <- c("l", "spol", "p", "t", "r", "trajanje", 2008:2017)
-  podatki <- read_csv2("podatki/trajanje_brezposelnosti.csv", 
-                       col_names=stolpci,
-                       locale=locale(encoding="Windows-1250"),
-                       skip=7, n_max=5) %>% .[, -(5:1)] %>%
-    melt(id.vars="trajanje", variable.name="leta", value.name="stevilo")
-}
-trajanje_iskanje_dela <- uvozi.trajanje_brezposelnosti()
-
-
 #uvoz brezposelnosti glede na tip gospodinjstva
 uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
   stolpci <- c("regija", "leta", "gospodinjstvo", "stopnja")
@@ -61,10 +49,10 @@ uvozi.tip_gospodinjstva <- function(gopodinjstvo) {
     melt(id.vars=c("leta", "gospodinjstvo"), variable.name="regija",
          value.name="stopnja") %>%
     fill(1) %>% drop_na(2) %>% mutate(stopnja = parse_number(stopnja))
+  
 }
 tip_gospodinjstva <- uvozi.tip_gospodinjstva()
 tip_gospodinjstva$regija <- NULL
-
 
 #uvoz brezposelnosti glede na statistične regije
 uvozi.statistične_regije <- function(regije) {

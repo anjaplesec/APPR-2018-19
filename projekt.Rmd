@@ -51,32 +51,26 @@ Podatke imam v razpredelnicah v obliki *tidy data*.
    - `spol` - spremenljivka: pove nam spol brezposelnega,
    - `stevilo` - meritev: pove nam število brezposelnih glede na spol in leto(x1000).
 
-3. `trajanje_iskanje_dela` - podatki o brezposelnosti po trajanju iskanja dela v Sloveniji,
-   - `trajanje` - spremenljivka: pove nam, koliko časa brezposelna oseba išče delo,
-   - `spol` - spremenljivka: spol brezposelnega,
-   - `leta` - spremenljivka: pove nam, katero leto opazujemo,
-   - `stevilo` - meritev: pove nam število brezposelnih(x1000), glede na to kako dolgo si brezposelna oseba že išče delo.
-
-4. `tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva v Sloveniji,
+3. `tip_gospodinjstva` - podatki o trajnaju brezposelnosti glede na tip gospodinjstva v Sloveniji,
    - `leto` - spremenljivka: pove nam, katero leto opazujemo,
    - `gospodinjstvo` - spremenljivka: pove nam kakšnega tipa je gospodinjstvo(Enočlansko gospodinjstvo, Samohranilec, Par brez otrok,..),
    - `stopnja` - meritev: pove nam stopnjo brezposelnih(v %), glede na tip gospodinjstva.
 
 
-5. `statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije,
+4. `statistične_regije` - podatki o brezposelnosti v posamezni statistični regiji Slovenije,
    - `regija` - spremenljivka: pove nam katero statistično regijo opazujemo(Koroška, Posavska, Goriška,..),
    - `leto` - spremenljivka: pove nam, katero leto opazujemo,
    - `stopnja` - meritev: pove nam stopnjo brezposelnih(v %) glede na posamezno statistično regijo.
    
 
-6. `brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah,
+5. `brezposelnost_drzave` - podatki o brezposelnosti v posameznih državah,
    - `država` - spremenljivka: pove nam katero državo opazujemo(Slovenija, Nemčija, Italija,..),
    - `leta` - spremenljivka: pove nam, katero leto opazujemo,
    - `stevilo` - meritev: pove nam stopnjo brezposelnih(v %), glede na posamezno državo.
 
 To tabelo sem dodala za bolj zanimivo analizo v zadnji fazi.
  
-7. `obcine` - podatki o brezposelnosti v posameznih slovenskih občinah,
+6. `obcine` - podatki o brezposelnosti v posameznih slovenskih občinah,
    - `obcina` - spremenljivka: pove nam katero občino opazujemo(Bled, Maribor, Piran,..),
    - `leta` - spremenljivka: pove nam, katero leto opazujemo,
    - `stevilo` - meritev: pove nam število brezposelnih, glede na posamezno slovensko občino.
@@ -132,12 +126,13 @@ ggplot() + geom_polygon(data=left_join(Evropa, drzave2017, by=c("NAME"="drzava")
 
 ***
 
-# Napredna analiza podatkov
+# Napoved brezposelnosti
 
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")
 ```
 
+V tej fazi projekta, sem naredila model, ki napoveduje kaj se bo dogajalo z brezposelnimi osebami, glede na njihovo izobrazbo. 
 ```{r skupaj, echo=FALSE, warning=FALSE}
 print(skupaj)
 ```

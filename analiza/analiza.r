@@ -53,7 +53,7 @@ model3 <- ggplot(tabela.preciscena3) +
 novi.podatki3 <- data.frame(leta = seq(2018, 2022, 1))
 napoved3 <- novi.podatki3 %>% mutate(stevilo=predict(star3, .))
 model3 <- model3 + geom_point(data=napoved3, aes(x=leta, y=stevilo), color="red", size=3) +
-  scale_x_continuous(breaks =  seq(2008,2022, 3)) + scale_y_continuous(7:20)
+  scale_x_continuous(breaks =  seq(2008,2022, 3))
 
 #NIZJA ALI SREDNJA POKLICNA
 tabela.preciscena4 <- brezposelnost_izobrazba %>% filter(izobrazba =="Nizja ali srednja poklicna")
@@ -92,4 +92,3 @@ model5 <- model5 + geom_point(data=napoved5, aes(x=leta, y=stevilo), color="red"
 
 
 skupaj <- ggarrange(model2, model3, model4, model5, model1)
-print(skupaj)
